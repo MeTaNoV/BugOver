@@ -1,0 +1,46 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<dom-module id="bgo-auth">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    <paper-button raised>Register</paper-button>
+    <paper-button raised>Login</paper-button>
+    <paper-button raised>Logout</paper-button>
+    <paper-dialog>
+      <h2>Dialog Title</h2>
+      <paper-button raised>
+        Google Sign in
+      </paper-button>
+      <paper-button raised>
+        Steam sign in
+      </paper-button>
+      <paper-input
+        label="Email"
+        type="email"
+        prevent-invalid-input
+        error-message="You must enter a valid email!"
+        allowed-pattern="/.+@.+\..+/i"
+        >
+      </paper-input>
+      <paper-input
+        label="Password">
+      </paper-input>
+    </paper-dialog>
+  </template>
+  <script>
+    (function() {
+      'use strict';
+
+      Polymer({
+        is: 'bgo-auth',
+        properties: {
+
+        }
+      });
+    })();
+  </script>
+</dom-module>
