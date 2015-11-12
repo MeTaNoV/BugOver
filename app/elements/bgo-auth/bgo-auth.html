@@ -1,5 +1,9 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 
+<link rel="import" href="../../bower_components/firebase-auth.html">
+<link rel="import" href="../../bower_components/gold-email-input.html">
+<link rel="import" href="../../bower_components/gold-email-input.html">
+
 <dom-module id="bgo-auth">
   <template>
     <style>
@@ -7,29 +11,57 @@
         display: block;
       }
     </style>
-    <paper-button raised>Register</paper-button>
-    <paper-button raised>Login</paper-button>
-    <paper-button raised>Logout</paper-button>
-    <paper-dialog>
+    <firebase-auth 
+      id="firebaseAuth" 
+      user="{{user}}"
+      status-known="{{statusKnown}}" 
+      location="https://<YOUR-FIREBASE-APP>.firebaseio.com" 
+      provider="{{provider}}" 
+      on-error="errorHandler" 
+      on-user-created="userSuccessHandler" 
+      on-password-changed="userSuccessHandler" 
+      on-password-reset="userSuccessHandler" 
+      on-user-removed="userSuccessHandler">
+    </firebase-auth>
+
+    <template is="dom-if" id="authDisconnected" if={{!statusKnown}}>
+      <paper-button raised>Register</paper-button>
+      <paper-button raised>Login</paper-button>
+    </template>
+    <template is="dom-if" id="authConnected" if={{statusKnown}}>      
+      <paper-button raised>Logout</paper-button>
+    </template>
+
+    <!--
+      The dialog will be customized with the class attribute
+      to be either a "register" or "sign in" dialog  
+     -->
+    <paper-dialog id="bgoAuthDialog" class="register">
       <h2>Dialog Title</h2>
       <paper-button raised>
+        <iron-icon icon="google"></iron-icon>
         Google Sign in
       </paper-button>
       <paper-button raised>
-        Steam sign in
+        <iron-icon icon="google"></iron-icon>
+        Facebook Sign in
       </paper-button>
+      <paper-button raised disabled>
+        <img src="/source/to/steam">
+        Steam Sign in
+      </paper-button>
+      <gold-email-input 
+        label="Email" 
+        required auto-validate 
+        error-message="Please enter a valid email">
+      </gold-email-input>
       <paper-input
-        label="Email"
-        type="email"
-        prevent-invalid-input
-        error-message="You must enter a valid email!"
-        allowed-pattern="/.+@.+\..+/i"
-        >
+        label="Password"
+        required>
       </paper-input>
-      <paper-input
-        label="Password">
-      </paper-input>
+      <!-- Forgot your password -->
     </paper-dialog>
+
   </template>
   <script>
     (function() {
@@ -38,7 +70,11 @@
       Polymer({
         is: 'bgo-auth',
         properties: {
-
+          user: {
+            type: Object,
+            notify: true,
+            value: undefined
+          }
         }
       });
     })();
