@@ -7,7 +7,7 @@ This recipe focuses on adding an ES2015 to ES5 transpile step to Polymer Starter
 
 ## Create a transpile gulp task
 
-- Install the gulp Babel, Sourcemap and Crisper plugins: `npm install --save-dev gulp-babel gulp-sourcemaps gulp-crisper`
+- Install the gulp Babel, Sourcemap, Crisper plugins and Babel ES2015 preset: `npm install --save-dev gulp-babel gulp-sourcemaps gulp-crisper babel-preset-es2015`
 - Add the following gulp task in the `gulpfile.js` file:
 
 ```patch
@@ -16,7 +16,9 @@ This recipe focuses on adding an ES2015 to ES5 transpile step to Polymer Starter
 +  return gulp.src(['app/**/*.{js,html}'])
 +    .pipe($.sourcemaps.init())
 +    .pipe($.if('*.html', $.crisper())) // Extract JS from .html files
-+    .pipe($.if('*.js', $.babel()))
++    .pipe($.if('*.js', $.babel({
++      presets: ['es2015']
++    })))
 +    .pipe($.sourcemaps.write('.'))
 +    .pipe(gulp.dest('.tmp/'))
 +    .pipe(gulp.dest(dist()));
@@ -31,7 +33,7 @@ Note: At the time of writing Crisper does not generate the sourcemaps. Your app 
 
  - [ragingwind/gulp-crisper#4](https://github.com/ragingwind/gulp-crisper/issues/4)
  - [PolymerLabs/crisper#14](https://github.com/PolymerLabs/crisper/issues/14)
- 
+
 
 ## Integrating the transpile task
 
@@ -73,12 +75,12 @@ gulp.task('default', ['clean'], function (cb) {
 ```
 
  - In the `html` task replace `app` in the paths by `dist` since dist should already contain all JS and HTML files now transpiled.
- 
+
  ```patch
  // Scan your HTML for assets & optimize them
  gulp.task('html', function () {
    return optimizeHtmlTask(
--    ['app/**/*.html', '!app/{elements,test}/**/*.html'],  
+-    ['app/**/*.html', '!app/{elements,test}/**/*.html'],
 +    [dist('/**/*.html'), '!' + dist('/{elements,test}/**/*.html')],
      dist());
  });

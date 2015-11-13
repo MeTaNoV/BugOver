@@ -1,9 +1,5 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 
-<link rel="import" href="../../bower_components/firebase-auth.html">
-<link rel="import" href="../../bower_components/gold-email-input.html">
-<link rel="import" href="../../bower_components/gold-email-input.html">
-
 <dom-module id="bgo-auth">
   <template>
     <style>
@@ -11,16 +7,16 @@
         display: block;
       }
     </style>
-    <firebase-auth 
-      id="firebaseAuth" 
+    <firebase-auth
+      id="firebaseAuth"
       user="{{user}}"
-      status-known="{{statusKnown}}" 
-      location="https://<YOUR-FIREBASE-APP>.firebaseio.com" 
-      provider="{{provider}}" 
-      on-error="errorHandler" 
-      on-user-created="userSuccessHandler" 
-      on-password-changed="userSuccessHandler" 
-      on-password-reset="userSuccessHandler" 
+      status-known="{{statusKnown}}"
+      location="https://bugover.firebaseio.com"
+      provider="{{provider}}"
+      on-error="errorHandler"
+      on-user-created="userSuccessHandler"
+      on-password-changed="userSuccessHandler"
+      on-password-reset="userSuccessHandler"
       on-user-removed="userSuccessHandler">
     </firebase-auth>
 
@@ -28,14 +24,14 @@
       <paper-button raised>Register</paper-button>
       <paper-button raised>Login</paper-button>
     </template>
-    <template is="dom-if" id="authConnected" if={{statusKnown}}>      
+    <template is="dom-if" id="authConnected" if={{statusKnown}}>
       <paper-button raised>Logout</paper-button>
     </template>
 
     <!--
       The dialog will be customized with the class attribute
-      to be either a "register" or "sign in" dialog  
-     -->
+      to be either a "register" or "sign in" dialog
+    -->
     <paper-dialog id="bgoAuthDialog" class="register">
       <h2>Dialog Title</h2>
       <paper-button raised>
@@ -50,9 +46,9 @@
         <img src="/source/to/steam">
         Steam Sign in
       </paper-button>
-      <gold-email-input 
-        label="Email" 
-        required auto-validate 
+      <gold-email-input
+        label="Email"
+        required auto-validate
         error-message="Please enter a valid email">
       </gold-email-input>
       <paper-input
