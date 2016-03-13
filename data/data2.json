@@ -1,0 +1,32 @@
+{
+	"users": {
+		"user1": {
+			
+		}
+	},
+
+	"games": {
+		"g1": {
+			"name": "Game 1",
+			"versions": {
+				"0": "v0.3.0",
+				"1": "v0.7.0",
+				"2": "v1.0.0"
+			},
+			"currentVersion": "v1.0.0"
+		},
+		"g2": {
+			"name": "Game 2"
+		}
+	},
+
+	"issues": {
+		"g1": {
+			"i1": {
+				"reporter": "user1",
+				"creationTime": "date1",
+				"description": "This is issue 1"
+			}
+		}
+	}
+}
