@@ -1,0 +1,6 @@
+DataBase related:
+- use push() to create new Issue/Comment...
+- use transaction() to modify upvotes...
+  - should be done on the server
+  - API: upVote, downVote, closeIssue
+- 

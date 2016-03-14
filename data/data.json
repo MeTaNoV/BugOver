@@ -1,0 +1,62 @@
+{
+  "users": {
+    "user1": {
+      "name": "Mary Chen",
+      "games": { "game1": true },
+      "reputation": 1234,
+      "credits": 23,
+      "votes": {
+        "issue1": true,
+        "issue3": true
+      },
+      "issues": { 
+        "issue1": true,
+        "issue2": true
+      },
+      "comments": {
+        "comment1": true,
+        "comment2": true
+      }
+    },
+    "user2": { 
+    }
+  },
+  "games": {
+    "game1": {
+      "name": "I am Game 1",
+      "versions": {
+        "0": "v0.0.1",
+        "1": "v0.0.3"
+      },
+      "issues": {
+        "issue1": true,
+        "issue3": true
+      }
+    }
+  },
+  "issues": {
+    "issue1": {
+      "title": "I am Issue 1",
+      "description": "This is the description of Issue 1",
+      "upvotes": 3,
+      "game": "game1",
+      "version": "1",
+      "state": "open",
+      "reporter": "user1",
+      "followers": {
+        "user2": true,
+        "user3": true
+      },
+      "creationTime": "date1",
+      "modificationTime": "date2"
+    }
+  },
+  "comments": {
+    "comment1" : {
+      "text": "This is my first comment",
+      "user": "user2",
+      "creationTime": "date1",
+      "modificationTime": "date2"
+    }
+  }
+}
