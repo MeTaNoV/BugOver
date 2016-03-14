@@ -1,13 +1,3 @@
-<!--
-@license
-Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
-This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
-The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
-The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
-Code distributed by Google as part of the polymer project is also
-subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
--->
-
 <script src="../bower_components/page/page.js"></script>
 <script>
   window.addEventListener('WebComponentsReady', function() {
@@ -51,19 +41,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       setFocus(app.route);
     });
 
-    page('/users', function() {
-      app.route = 'users';
+    page('/:game', function(data) {
+      app.route = 'game-page';
+      app.params = data.params;
       setFocus(app.route);
     });
 
     page('/users/:name', function(data) {
       app.route = 'user-info';
       app.params = data.params;
-      setFocus(app.route);
-    });
-
-    page('/contact', function() {
-      app.route = 'contact';
       setFocus(app.route);
     });
 
@@ -74,7 +60,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       page.redirect(app.baseUrl);
     });
 
-    // add #! before urls
     page();
 
   });
