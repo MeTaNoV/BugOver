@@ -13,12 +13,10 @@
 
     // Middleware
     function scrollToTop(ctx, next) {
-      app.scrollPageToTop();
       next();
     }
 
     function closeDrawer(ctx, next) {
-      app.closeDrawer();
       next();
     }
 
@@ -38,6 +36,11 @@
 
     page(app.baseUrl, function() {
       app.route = 'home';
+      setFocus(app.route);
+    });
+
+    page('/games', function() {
+      app.route = 'games';
       setFocus(app.route);
     });
 

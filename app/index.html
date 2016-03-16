@@ -61,7 +61,7 @@
 
     <firebase-auth-dialog entry-animation="scale-up-animation"
                           exit-animation="fade-out-animation"
-                          providers='["facebook", "google"]'
+                          providers='["google"]'
                           modal>
       <h2 title-sign-up>Sign-Up Dialog</h2>
       <h2 title-sign-in>Sign-In Dialog</h2>
@@ -74,9 +74,36 @@
 
     <paper-toolbar>
       <span>Bug Over</span>
+      <div class="space"></div>
       <firebase-account-menu></firebase-account-menu>
     </paper-toolbar>
 
+    <div class="content">
+      <iron-pages attr-for-selected="data-route" selected="{{route}}">
+        <section data-route="home" tabindex="-1">
+          HELLO HOME!
+        </section>
+
+        <section data-route="games" tabindex="-1">
+          HELLO GAMES!
+        </section>
+
+        <section data-route="game-page" tabindex="-1">
+          HELLO GAME!
+        </section>
+
+        <section data-route="user-info" tabindex="-1">
+          HELLO USER!
+        </section>
+
+        <section data-route="contact" tabindex="-1">
+          <paper-material elevation="1">
+            <h1 class="page-title">Contact</h1>
+            <p>This is the contact section</p>
+          </paper-material>
+        </section>
+      </iron-pages>
+    </div>
     <!-- Uncomment next block to enable Service Worker support (1/2) -->
     <!--
     <paper-toast id="caching-complete"
