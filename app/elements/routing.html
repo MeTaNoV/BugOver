@@ -44,15 +44,14 @@
       setFocus(app.route);
     });
 
-    page('/:game', function(data) {
+    page('/game/:game', function(data) {
       app.route = 'game-page';
       app.params = data.params;
       setFocus(app.route);
     });
 
-    page('/users/:name', function(data) {
-      app.route = 'user-info';
-      app.params = data.params;
+    page('/profile', function() {
+      app.route = 'profile';
       setFocus(app.route);
     });
 

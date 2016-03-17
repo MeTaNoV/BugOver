@@ -86,21 +86,29 @@
 
         <section data-route="games" tabindex="-1">
           HELLO GAMES!
+          <bgo-games-page></bgo-games-page>
         </section>
 
         <section data-route="game-page" tabindex="-1">
           HELLO GAME!
+          <bgo-game-page game="{{params.game}}"></bgo-game-page>
         </section>
 
-        <section data-route="user-info" tabindex="-1">
-          HELLO USER!
+        <section data-route="profile" tabindex="-1">
+          <!-- Handle a not logged-in state with dom-if -->
+          <firebase-profile-page profile="{{profile}}">
+            <paper-material elevation="1">
+              <h3>Additional Information</h3>
+              <div id="container">
+                <paper-input label="Information 1" value="{{profile.info1}}"></paper-input>
+                <paper-input label="Information 2" value="{{profile.info2}}"></paper-input>
+              </div>
+            </paper-material>
+          </firebase-profile-page>
         </section>
 
         <section data-route="contact" tabindex="-1">
-          <paper-material elevation="1">
-            <h1 class="page-title">Contact</h1>
-            <p>This is the contact section</p>
-          </paper-material>
+
         </section>
       </iron-pages>
     </div>
