@@ -1,0 +1,33 @@
+<link rel="import" href="..\..\bower_components/polymer/polymer.html">
+
+<link rel="import" href="..\..\bower_components/iron-list/iron-list.html">
+
+<link rel="import" href="..\..\bower_components/paper-card/paper-card.html">
+
+<link rel="import" href="..\..\bower_components/firebase-element/firebase-collection">
+
+<dom-module id="bgo-games-page">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    <firebase-collection>
+    </firebase-collection>
+    <div>Game list: </div>
+
+  </template>
+  <script>
+  (function() {
+    'use strict';
+
+    Polymer({
+      is: 'bgo-games-page',
+
+      properties: {
+      }
+    });
+  })();
+  </script>
+</dom-module>
