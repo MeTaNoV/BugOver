@@ -4,7 +4,7 @@
 
 <link rel="import" href="..\..\bower_components/paper-card/paper-card.html">
 
-<link rel="import" href="..\..\bower_components/firebase-element/firebase-collection">
+<link rel="import" href="..\..\bower_components/firebase-element/firebase-collection.html">
 
 <dom-module id="bgo-games-page">
   <template>
@@ -13,10 +13,19 @@
         display: block;
       }
     </style>
-    <firebase-collection>
+    <firebase-collection
+      log
+      location='[[_gamesLocation]]'
+      data='{{_games}}'>
     </firebase-collection>
     <div>Game list: </div>
-
+    <iron-list
+      items='{{_games}}'
+      as='game'>
+      <template>
+        <div>[[game.name]]</div>
+      </template>
+    </iron-list>
   </template>
   <script>
   (function() {
@@ -26,6 +35,17 @@
       is: 'bgo-games-page',
 
       properties: {
+        _gamesLocation: {
+          type: String
+        },
+        _games: {
+          type: Array,
+          value: function() { return []; }
+        }
+      },
+
+      attached: function() {
+        this._gamesLocation = bgoApp.firebaseUrl + '/games';
       }
     });
   })();

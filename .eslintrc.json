@@ -11,7 +11,7 @@
   ],
   "globals": {
     "__dirname": false,
-    "app": false,
+    "bgoApp": false,
     "page": false,
     "Polymer": false,
     "process": false,

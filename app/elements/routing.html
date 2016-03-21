@@ -6,9 +6,9 @@
     // client-side router inspired by the Express router
     // More info: https://visionmedia.github.io/page.js/
 
-    // Removes end / from app.baseUrl which page.base requires for production
+    // Removes end / from bgoApp.baseUrl which page.base requires for production
     if (window.location.port === '') {  // if production
-      page.base(app.baseUrl.replace(/\/$/, ''));
+      page.base(bgoApp.baseUrl.replace(/\/$/, ''));
     }
 
     // Middleware
@@ -30,36 +30,36 @@
     });
 
     page('/', function() {
-      app.route = 'home';
-      setFocus(app.route);
+      bgoApp.route = 'home';
+      setFocus(bgoApp.route);
     });
 
-    page(app.baseUrl, function() {
-      app.route = 'home';
-      setFocus(app.route);
+    page(bgoApp.baseUrl, function() {
+      bgoApp.route = 'home';
+      setFocus(bgoApp.route);
     });
 
     page('/games', function() {
-      app.route = 'games';
-      setFocus(app.route);
+      bgoApp.route = 'games';
+      setFocus(bgoApp.route);
     });
 
     page('/game/:game', function(data) {
-      app.route = 'game-page';
-      app.params = data.params;
-      setFocus(app.route);
+      bgoApp.route = 'game-page';
+      bgoApp.params = data.params;
+      setFocus(bgoApp.route);
     });
 
     page('/profile', function() {
-      app.route = 'profile';
-      setFocus(app.route);
+      bgoApp.route = 'profile';
+      setFocus(bgoApp.route);
     });
 
     // 404
     page('*', function() {
-      app.$.toast.text = 'Can\'t find: ' + window.location.href  + '. Redirected you to Home Page';
-      app.$.toast.show();
-      page.redirect(app.baseUrl);
+      bgoApp.$.toast.text = 'Can\'t find: ' + window.location.href  + '. Redirected you to Home Page';
+      bgoApp.$.toast.show();
+      page.redirect(bgoApp.baseUrl);
     });
 
     page();
