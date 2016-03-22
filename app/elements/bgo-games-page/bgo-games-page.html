@@ -1,16 +1,23 @@
-<link rel="import" href="..\..\bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/polymer/polymer.html">
 
-<link rel="import" href="..\..\bower_components/iron-list/iron-list.html">
+<link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../../bower_components/iron-list/iron-list.html">
 
-<link rel="import" href="..\..\bower_components/paper-card/paper-card.html">
+<link rel="import" href="../../bower_components/paper-card/paper-card.html">
 
-<link rel="import" href="..\..\bower_components/firebase-element/firebase-collection.html">
+<link rel="import" href="../../bower_components/firebase-element/firebase-collection.html">
+
+<link rel="import" href="../bgo-game-item/bgo-game-item.html">
 
 <dom-module id="bgo-games-page">
   <template>
     <style>
       :host {
-        display: block;
+        @apply(--layout-vertical);
+        @apply(--layout-flex);
+      }
+      iron-list {
+        @apply(--layout-flex);
       }
     </style>
     <firebase-collection
@@ -18,7 +25,7 @@
       location='[[_gamesLocation]]'
       data='{{_games}}'>
     </firebase-collection>
-    <div>Game list: </div>
+    <h1>Game list: </h1>
     <iron-list
       items='{{_games}}'
       as='game'>
@@ -43,9 +50,20 @@
           value: function() { return []; }
         }
       },
+      observers: [
+        '_dataChanged1(_games.splices)',
+        '_dataChanged2(_games.*)'
+      ],
 
       attached: function() {
         this._gamesLocation = bgoApp.firebaseUrl + '/games';
+      },
+
+      _dataChanged1: function() {
+        console.log('Games data 1: ' + this._games);
+      },
+      _dataChanged2: function() {
+        console.log('Games data 2: ' + this._games);
       }
     });
   })();

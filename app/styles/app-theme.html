@@ -1,9 +1,12 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
 
+<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout.html">
+
 <link rel="import" href="../bower_components/paper-styles/typography.html">
 <link rel="import" href="../bower_components/paper-styles/color.html">
 
 <style is="custom-style">
+
   /*
    Polymer includes a shim for CSS Custom Properties that we can use for application theming.
    Below, you'll find the default palette for the Polymer Starter Kit layout. Feel free to play
@@ -30,6 +33,14 @@
 
     /* Components */
 
+    /* paper-drawer-panel */
+    --drawer-menu-color: #ffffff;
+    --drawer-border-color: 1px solid #ccc;
+    --drawer-toolbar-border-color: 1px solid rgba(0, 0, 0, 0.22);
+
+    /* paper-menu */
+    --paper-menu-background-color: #fff;
+    --menu-link-color: #111111;
   }
 
   /* General styles */
@@ -43,12 +54,97 @@
     @apply(--layout-flex);
   }
 
-  .content {
+  #drawerToolbar {
+    color: var(--secondary-text-color);
+    background-color: var(--drawer-menu-color);
+    border-bottom: var(--drawer-toolbar-border-color);
   }
 
-  #toast .toast-hide-button {
-    color: #eeff41;
-    margin: 10px;
+  #drawerToolbar .menu-name {
+    @apply(--paper-font-title);
+  }
+
+  paper-scroll-header-panel {
+    height: 100%;
+  }
+
+  paper-menu {
+    --paper-menu-selected-item: {
+      color: var(--primary-color);
+    }
+
+    --paper-menu-focused-item-after: {
+      background: var(--primary-color);
+    }
+  }
+
+  paper-menu iron-icon {
+    margin-right: 33px;
+    opacity: 0.54;
+  }
+
+  paper-menu a {
+    @apply(--layout-horizontal);
+    @apply(--layout-center);
+
+    text-decoration: none;
+    color: var(--menu-link-color);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 24px;
+    min-height: 48px;
+    padding: 0 16px;
+  }
+
+  #mainToolbar.tall .app-name {
+    @apply(--paper-font-title);
+    /* Required for main area's paper-scroll-header-panel custom condensing transformation */
+    -webkit-transform-origin: left center;
+    transform-origin: left center;
+  }
+
+  #mainToolbar .middle-container,
+  #mainToolbar .bottom-container {
+    @apply(--layout-horizontal);
+    @apply(--layout-center);
+  }
+
+  #mainToolbar .middle-container  {
+    height: 100%;
+    margin-left: 48px;
+  }
+
+  #mainToolbar:not(.tall) .middle-container {
+    font-size: 18px;
+    padding-bottom: 0;
+  }
+
+  #mainToolbar .bottom-container {
+    @apply(--paper-font-subhead);
+
+    margin-left: 48px;
+    /* Required for main area's paper-scroll-header-panel custom condensing transformation */
+    -webkit-transform-origin: left center;
+    transform-origin: left center;
+  }
+
+  .mainContent {
+    height: 100%;
+    @apply(--layout-vertical);
+  }
+
+  iron-pages {
+    @apply(--layout-flex);
+    @apply(--layout-horizontal);
+    @apply(--layout-center-justified);
+  }
+
+  section {
+    max-width: 1024px;
+    @apply(--layout-horizontal);
+    @apply(--layout-flex);
   }
 
   section[tabindex="-1"]:focus { outline: none; }
@@ -57,13 +153,25 @@
 
   /* Small */
   @media (max-width: 600px) {
-    iron-pages {
-      padding: 8px 8px;
+
+    #drawer .paper-toolbar {
+      margin-left: 16px;
     }
+
+    #mainToolbar.tall .app-name {
+      font-size: 24px;
+      font-weight: 400;
+    }
+
   }
 
   /* Tablet+ */
   @media (min-width: 601px) {
+
+    #drawer.paper-drawer-panel > [drawer] {
+      border-right: 1px solid rgba(0, 0, 0, 0.14);
+    }
+
     iron-pages {
       padding: 48px 62px;
     }

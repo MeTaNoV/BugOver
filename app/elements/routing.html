@@ -13,15 +13,19 @@
 
     // Middleware
     function scrollToTop(ctx, next) {
+      bgoApp.scrollPageToTop();
       next();
     }
 
     function closeDrawer(ctx, next) {
+      bgoApp.closeDrawer();
       next();
     }
 
     function setFocus(selected){
-      document.querySelector('section[data-route="' + selected + '"]').focus();
+      Polymer.dom(document)
+        .querySelector('section[data-route="' + selected + '"] .focus-target')
+        .focus();
     }
 
     // Routes
@@ -55,10 +59,13 @@
       setFocus(bgoApp.route);
     });
 
+    page('/contact', function() {
+      bgoApp.route = 'contact';
+      setFocus(bgoApp.route);
+    });
+
     // 404
     page('*', function() {
-      bgoApp.$.toast.text = 'Can\'t find: ' + window.location.href  + '. Redirected you to Home Page';
-      bgoApp.$.toast.show();
       page.redirect(bgoApp.baseUrl);
     });
 

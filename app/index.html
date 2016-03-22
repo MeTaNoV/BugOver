@@ -72,46 +72,89 @@
 
     <firebase-state logged="{{logged}}" user="{{user}}"></firebase-state>
 
-    <paper-toolbar>
-      <span>Bug Over</span>
-      <div class="space"></div>
-      <firebase-account-menu></firebase-account-menu>
-    </paper-toolbar>
+    <paper-drawer-panel id="paperDrawerPanel" responsive-width="840px">
+      <!-- Drawer Scroll Header Panel -->
+      <paper-scroll-header-panel drawer fixed>
 
-    <div class="content">
-      <iron-pages attr-for-selected="data-route" selected="{{route}}">
-        <section data-route="home" tabindex="-1">
-          HELLO HOME!
-        </section>
+        <!-- Drawer Toolbar -->
+        <paper-toolbar id="drawerToolbar">
+          <span class="menu-name">Menu</span>
+        </paper-toolbar>
 
-        <section data-route="games" tabindex="-1">
-          HELLO GAMES!
-          <bgo-games-page></bgo-games-page>
-        </section>
+        <!-- Drawer Content -->
+        <paper-menu class="app-menu" attr-for-selected="data-route" selected="[[route]]">
+          <a data-route="home" href="{{baseUrl}}">
+            <iron-icon icon="home"></iron-icon>
+            <span>Home</span>
+          </a>
 
-        <section data-route="game-page" tabindex="-1">
-          HELLO GAME!
-          <bgo-game-page game="{{params.game}}"></bgo-game-page>
-        </section>
+          <a data-route="games" href="{{baseUrl}}games">
+            <iron-icon icon="info"></iron-icon>
+            <span>Games</span>
+          </a>
 
-        <section data-route="profile" tabindex="-1">
-          <!-- Handle a not logged-in state with dom-if -->
-          <firebase-profile-page profile="{{profile}}">
-            <paper-material elevation="1">
-              <h3>Additional Information</h3>
-              <div id="container">
-                <paper-input label="Information 1" value="{{profile.info1}}"></paper-input>
-                <paper-input label="Information 2" value="{{profile.info2}}"></paper-input>
-              </div>
-            </paper-material>
-          </firebase-profile-page>
-        </section>
+          <a data-route="profile" href="{{baseUrl}}profile">
+            <iron-icon icon="info"></iron-icon>
+            <span>Profile</span>
+          </a>
 
-        <section data-route="contact" tabindex="-1">
+          <a data-route="contact" href="{{baseUrl}}contact">
+            <iron-icon icon="mail"></iron-icon>
+            <span>Contact</span>
+          </a>
+        </paper-menu>
+      </paper-scroll-header-panel>
 
-        </section>
-      </iron-pages>
-    </div>
+      <!-- Main Area -->
+      <paper-scroll-header-panel main id="headerPanelMain" condenses keep-condensed-header>
+        <!-- Main Toolbar -->
+        <paper-toolbar id="mainToolbar" class="tall">
+          <paper-icon-button id="paperToggle" icon="menu" paper-drawer-toggle></paper-icon-button>
+
+          <span class="space"></span>
+
+          <!-- Application name -->
+          <div class="middle middle-container">
+            <div class="app-name">Bug Over</div>
+          </div>
+
+          <firebase-account-menu></firebase-account-menu>
+        </paper-toolbar>
+
+        <div class="mainContent">
+          <iron-pages attr-for-selected="data-route" selected="{{route}}">
+            <section data-route="home">
+              <bgo-home-page class="focus-target" tabindex="-1"></bgo-home-page>
+            </section>
+
+            <section data-route="games">
+              <bgo-games-page class="focus-target" tabindex="-1"></bgo-games-page>
+            </section>
+
+            <section data-route="game-page">
+              <bgo-game-page class="focus-target" tabindex="-1" game="{{params.game}}"></bgo-game-page>
+            </section>
+
+            <section data-route="profile">
+              <!-- Handle a not logged-in state with dom-if -->
+              <firebase-profile-page class="focus-target" tabindex="-1" profile="{{profile}}">
+                <paper-material elevation="1">
+                  <h3>Additional Information</h3>
+                  <div id="container">
+                    <paper-input label="Information 1" value="{{profile.info1}}"></paper-input>
+                    <paper-input label="Information 2" value="{{profile.info2}}"></paper-input>
+                  </div>
+                </paper-material>
+              </firebase-profile-page>
+            </section>
+
+            <section data-route="contact">
+              <bgo-contact-page class="focus-target" tabindex="-1"></bgo-contact-page>
+            </section>
+          </iron-pages>
+        </div>
+      </paper-scroll-header-panel>
+    </paper-drawer-panel>
     <!-- Uncomment next block to enable Service Worker support (1/2) -->
     <!--
     <paper-toast id="caching-complete"

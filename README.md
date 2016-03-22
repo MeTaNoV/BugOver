@@ -170,7 +170,7 @@ Components installed by Bower live in the `app/bower_components` directory. This
 ### Github Pages
 
 1. Uncomment this line  `// app.baseUrl = '/polymer-starter-kit/';` in app.js near the top
-2. Change `app.baseUrl = '/polymer-starter-kit/';`  to `app.baseUrl = '/your-pathname/';` (ex: if you repo is `github.com/username/bobs-awesome-site` you would change this to `bobs-awesome-site`)
+2. Change `app.baseUrl = '/polymer-starter-kit/';`  to `app.baseUrl = '/your-pathname/';` (ex: if you repo is `github.com/username/bobs-awesome-site` you would change this to `app.baseUrl = '/bobs-awesome-site/';`)
 3. Run `gulp build-deploy-gh-pages` from command line
 4. To see changes wait 1-2 minutes then load Github pages for your app (ex: https://polymerelements.github.io/polymer-starter-kit/)
 
@@ -336,7 +336,7 @@ Node.js (and npm) may have been installed into `C:\Program Files\`. Updating npm
 into `%AppData%\npm`, but your system will still use the npm version. You can avoid this by deleting your older npm from `C:\Program Files\nodejs`
 as described [here](https://github.com/npm/npm/issues/6309#issuecomment-67549380).
 
-If you get a browser console error indicating that an element you know you have installed is missing, try deleting the bower_components folder, then run `bower cache clean` followed by `bower install` to reinstall. This can be especially helpful when upgrading from a prior version of the Polymer Starter Kit. 
+If you get a browser console error indicating that an element you know you have installed is missing, try deleting the bower_components folder, then run `bower cache clean` followed by `bower install` to reinstall. This can be especially helpful when upgrading from a prior version of the Polymer Starter Kit.
 
 If the issue is to do with a failure somewhere else, you might find that due to a network issue
 a dependency failed to correctly install. We recommend running `npm cache clean` and deleting the `node_modules` directory followed by
