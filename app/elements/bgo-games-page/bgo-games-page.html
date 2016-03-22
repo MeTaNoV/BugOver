@@ -3,8 +3,6 @@
 <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
 <link rel="import" href="../../bower_components/iron-list/iron-list.html">
 
-<link rel="import" href="../../bower_components/paper-card/paper-card.html">
-
 <link rel="import" href="../../bower_components/firebase-element/firebase-collection.html">
 
 <link rel="import" href="../bgo-game-item/bgo-game-item.html">
@@ -19,6 +17,10 @@
       iron-list {
         @apply(--layout-flex);
       }
+      a {
+        color: var(--primary-text-color);
+        text-decoration: none;
+      }
       bgo-game-item {
         padding: 4px;
         background: white;
@@ -27,7 +29,6 @@
       bgo-game-item:hover {
         opacity: 0.7;
       }
-
     </style>
     <firebase-collection
       log
@@ -39,7 +40,9 @@
       items='{{_games}}'
       as='game'>
       <template>
-        <bgo-game-item game=[[game]]></bgo-game-item>
+        <a data-route="game" href="{{_gameBaseUrl}}/{{game.__firebaseKey__}}">
+          <bgo-game-item game="[[game]]"></bgo-game-item>
+        </a>
       </template>
     </iron-list>
   </template>
@@ -57,24 +60,18 @@
         _games: {
           type: Array,
           value: function() { return []; }
+        },
+        _gameBaseUrl: {
+          type: String
         }
       },
-      observers: [
-        '_dataChanged1(_games.splices)',
-        '_dataChanged2(_games.*)'
-      ],
 
       attached: function() {
         this._gamesLocation = bgoApp.firebaseUrl + '/games';
-      },
-
-      _dataChanged1: function() {
-        console.log('Games data 1: ' + this._games);
-      },
-      _dataChanged2: function() {
-        console.log('Games data 2: ' + this._games);
+        this._gameBaseUrl = bgoApp.baseUrl + 'game';
       }
     });
+
   })();
   </script>
 </dom-module>

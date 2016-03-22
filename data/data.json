@@ -12,44 +12,44 @@
   "games" : {
     "g1" : {
       "currentVersion" : "v1.0.0",
-      "name" : "Game 1",
       "description" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "name" : "Game 1",
       "versions" : [ "v0.3.0", "v0.7.0", "v1.0.0" ]
     },
     "g2" : {
       "currentVersion" : "v1.0.0",
-      "name" : "Game 2",
       "description" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "name" : "Game 2",
       "versions" : [ "v0.3.0", "v0.7.0", "v1.0.0" ]
     },
     "g3" : {
       "currentVersion" : "v1.0.0",
-      "name" : "Game 3",
       "description" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "name" : "Game 3",
       "versions" : [ "v0.3.0", "v0.7.0", "v1.0.0" ]
     },
     "g4" : {
       "currentVersion" : "v1.0.0",
-      "name" : "The Game 4",
       "description" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "name" : "The Game 4",
       "versions" : [ "v0.3.0", "v0.7.0", "v1.0.0" ]
     },
     "g5" : {
       "currentVersion" : "v1.0.0",
-      "name" : "The Game 5",
       "description" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "name" : "The Game 5",
       "versions" : [ "v0.3.0", "v0.7.0", "v1.0.0" ]
     },
     "g6" : {
       "currentVersion" : "v1.0.0",
-      "name" : "The Game 6",
       "description" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "name" : "The Game 6",
       "versions" : [ "v0.3.0", "v0.7.0", "v1.0.0" ]
     },
     "g7" : {
       "currentVersion" : "v1.0.0",
-      "name" : "The Game 7",
       "description" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "name" : "The Game 7",
       "versions" : [ "v0.3.0", "v0.7.0", "v1.0.0" ]
     }
   },
@@ -62,7 +62,104 @@
           "user2" : true,
           "user3" : true
         },
-        "game" : "game1",
+        "modification" : "date2",
+        "reporter" : "user1",
+        "state" : "open",
+        "title" : "I am Issue 1",
+        "version" : "v1.0.0",
+        "votes" : 3
+      },
+      "i2" : {
+        "creation" : "date1",
+        "description" : "This is the description of Issue 2",
+        "followers" : {
+          "user2" : true,
+          "user3" : true
+        },
+        "modification" : "date2",
+        "reporter" : "user1",
+        "state" : "open",
+        "title" : "I am Issue 1",
+        "version" : "v1.0.0",
+        "votes" : 3
+      },
+      "i3" : {
+        "creation" : "date1",
+        "description" : "This is the description of Issue 3",
+        "followers" : {
+          "user2" : true,
+          "user3" : true
+        },
+        "modification" : "date2",
+        "reporter" : "user1",
+        "state" : "open",
+        "title" : "I am Issue 1",
+        "version" : "v1.0.0",
+        "votes" : 3
+      },
+      "i4" : {
+        "creation" : "date1",
+        "description" : "This is the description of Issue 4",
+        "followers" : {
+          "user2" : true,
+          "user3" : true
+        },
+        "modification" : "date2",
+        "reporter" : "user1",
+        "state" : "open",
+        "title" : "I am Issue 1",
+        "version" : "v1.0.0",
+        "votes" : 3
+      },
+      "i5" : {
+        "creation" : "date1",
+        "description" : "This is the description of Issue 5",
+        "followers" : {
+          "user2" : true,
+          "user3" : true
+        },
+        "modification" : "date2",
+        "reporter" : "user1",
+        "state" : "open",
+        "title" : "I am Issue 1",
+        "version" : "v1.0.0",
+        "votes" : 3
+      },
+      "i6" : {
+        "creation" : "date1",
+        "description" : "This is the description of Issue 6",
+        "followers" : {
+          "user2" : true,
+          "user3" : true
+        },
+        "modification" : "date2",
+        "reporter" : "user1",
+        "state" : "open",
+        "title" : "I am Issue 1",
+        "version" : "v1.0.0",
+        "votes" : 3
+      },
+      "i7" : {
+        "creation" : "date1",
+        "description" : "This is the description of Issue 7",
+        "followers" : {
+          "user2" : true,
+          "user3" : true
+        },
+        "modification" : "date2",
+        "reporter" : "user1",
+        "state" : "open",
+        "title" : "I am Issue 1",
+        "version" : "v1.0.0",
+        "votes" : 3
+      },
+      "i8" : {
+        "creation" : "date1",
+        "description" : "This is the description of Issue 8",
+        "followers" : {
+          "user2" : true,
+          "user3" : true
+        },
         "modification" : "date2",
         "reporter" : "user1",
         "state" : "open",

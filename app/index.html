@@ -124,15 +124,25 @@
         <div class="mainContent">
           <iron-pages attr-for-selected="data-route" selected="{{route}}">
             <section data-route="home">
-              <bgo-home-page class="focus-target" tabindex="-1"></bgo-home-page>
+              <bgo-home-page 
+                class="focus-target" 
+                tabindex="-1">
+              </bgo-home-page>
             </section>
 
             <section data-route="games">
-              <bgo-games-page class="focus-target" tabindex="-1"></bgo-games-page>
+              <bgo-games-page 
+                class="focus-target" 
+                tabindex="-1">
+              </bgo-games-page>
             </section>
 
             <section data-route="game-page">
-              <bgo-game-page class="focus-target" tabindex="-1" game="{{params.game}}"></bgo-game-page>
+              <bgo-game-page 
+                class="focus-target"
+                tabindex="-1"
+                game-key="{{params.game}}">
+              </bgo-game-page>
             </section>
 
             <section data-route="profile">

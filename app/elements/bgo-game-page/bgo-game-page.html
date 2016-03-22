@@ -1,0 +1,92 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../../bower_components/iron-list/iron-list.html">
+
+<link rel="import" href="../../bower_components/firebase-element/firebase-collection.html">
+<link rel="import" href="../../bower_components/firebase-element/firebase-document.html">
+
+<link rel="import" href="../bgo-issue-item/bgo-issue-item.html">
+
+<dom-module id="bgo-game-page">
+  <template>
+    <style>
+      :host {
+        @apply(--layout-vertical);
+        @apply(--layout-flex);
+      }
+      iron-list {
+        @apply(--layout-flex);
+      }
+      a {
+        color: var(--primary-text-color);
+        text-decoration: none;
+      }
+      bgo-issue-item {
+        padding: 4px;
+        background: white;
+        border: 1px solid #ddd;
+      }
+      bgo-issue-item:hover {
+        opacity: 0.7;
+      }
+    </style>
+    <firebase-document
+      log
+      location='[[_gameLocation]]'
+      data='{{_game}}'>
+    </firebase-document>
+    <firebase-collection
+      log
+      location='[[_issuesLocation]]'
+      data='{{_issues}}'>
+    </firebase-collection>
+    <h1>Welcome to {{_game.name}}</h1>
+    <iron-list
+      items='{{_issues}}'
+      as='issue'>
+      <template>
+        <bgo-issue-item issue="[[issue]]"></bgo-issue-item>
+      </template>
+    </iron-list>
+  </template>
+  <script>
+  (function() {
+    'use strict';
+
+    Polymer({
+      is: 'bgo-game-page',
+
+      properties: {
+        gameKey: {
+          type: String
+        },
+        _game: {
+          type: Object
+        },
+        _gameLocation: {
+          type: String,
+          computed: '_computeGameLocation(gameKey)'
+        },
+        _issuesLocation: {
+          type: String,
+          computed: '_computeIssuesLocation(gameKey)'
+        },
+        _issues: {
+          type: Array,
+          value: function() { return []; }
+        }
+      },
+
+      _computeGameLocation: function(gameKey) {
+        return bgoApp.firebaseUrl + '/games/' + gameKey;
+      },
+
+      _computeIssuesLocation: function(gameKey) {
+        return bgoApp.firebaseUrl + '/issues/' + gameKey;
+      }
+    });
+
+  })();
+  </script>
+</dom-module>

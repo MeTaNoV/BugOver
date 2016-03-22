@@ -1,0 +1,47 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
+
+<link rel="import" href="../../bower_components/paper-styles/typography.html">
+
+<dom-module id="bgo-issue-item">
+  <template>
+    <style>
+      :host {
+        @apply(--layout-horizontal);
+      }
+      .issueInfo {
+        @apply(--layout-flex);
+        @apply(--layout-vertical);
+        padding: 6px;
+      }
+      .issueName {
+        @apply(--paper-font-title);
+      }
+      .issueDescription {
+        @apply(--layout-flex);
+        @apply(--paper-font-body2);
+      }
+    </style>
+    <div class="issueInfo">
+      <span class="issueName">{{issue.title}}</span>
+      <span class="issueDescription">{{issue.description}}</span>
+    </div>
+  </template>
+  <script>
+  (function() {
+    'use strict';
+
+    Polymer({
+      is: 'bgo-issue-item',
+
+      properties: {
+        issue: {
+          type: Object,
+          value: function() { return {}; }
+        }
+      }
+    });
+  })();
+  </script>
+</dom-module>
