@@ -10,47 +10,54 @@
     }
   },
   "games" : {
-    "g1" : {
-      "currentVersion" : "v1.0.0",
-      "description" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-      "name" : "Game 1",
-      "versions" : [ "v0.3.0", "v0.7.0", "v1.0.0" ]
+    "mmh7" : {
+      "steamAppId": 321960,
+      "currentVersion" : "v1.7",
+      "description" : "Might &amp; Magic® Heroes® VII makes a triumphant return bringing you the essence of turn based strategy gaming. Set in a fantasy universe with RPG progression with a strong story narrative, you will embark on a journey that you will never forget!",
+      "name" : "Might & Magic Heroes VII",
+      "versions" : [ "v1.0", "v1.1", "v1.2", "v1.3", "v1.4", "v1.5", "v1.6", "v1.7" ]
     },
-    "g2" : {
-      "currentVersion" : "v1.0.0",
-      "description" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-      "name" : "Game 2",
-      "versions" : [ "v0.3.0", "v0.7.0", "v1.0.0" ]
+    "xcom2" : {
+      "steamAppId": 268500,
+      "currentVersion" : "1.1.0",
+      "description" : "XCOM 2 is the sequel to the award-winning strategy game, XCOM: Enemy Unknown. Twenty years have passed since humanity lost the war against the alien invaders and a new world order now exists on Earth. After years of lurking in the shadows, XCOM forces must rise and eliminate the alien occupation.",
+      "name" : "XCOM 2",
+      "versions" : [ "1.0.0", "1.0.1", "1.1.0" ]
     },
-    "g3" : {
-      "currentVersion" : "v1.0.0",
-      "description" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-      "name" : "Game 3",
-      "versions" : [ "v0.3.0", "v0.7.0", "v1.0.0" ]
+    "kingdom" : {
+      "steamAppId": 368230,
+      "currentVersion" : "v1.2.0",
+      "description" : "Kingdom is a 2D sidescrolling strategy/resource management hybrid with a minimalist feel wrapped in a beautiful, modern pixel art aesthetic.",
+      "name" : "Kingdom",
+      "versions" : [ "v1.0.0", "v1.1.0", "v1.2.0" ]
     },
-    "g4" : {
-      "currentVersion" : "v1.0.0",
-      "description" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-      "name" : "The Game 4",
-      "versions" : [ "v0.3.0", "v0.7.0", "v1.0.0" ]
+    "factorio" : {
+      "steamAppId": 427520,
+      "currentVersion" : "v1.2.0",
+      "description" : "Factorio is a game about building and creating automated factories to produce items of increasing complexity, within an infinite 2D world. Use your imagination to design your factory, combine simple elements into ingenious structures, and finally protect it from the creatures who don't really like you.",
+      "name" : "Factorio",
+      "versions" : [ "v1.0.0", "v1.1.0", "v1.2.0" ]
     },
-    "g5" : {
-      "currentVersion" : "v1.0.0",
-      "description" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-      "name" : "The Game 5",
-      "versions" : [ "v0.3.0", "v0.7.0", "v1.0.0" ]
+    "cities_skyline" : {
+      "steamAppId": 255710,
+      "currentVersion" : "1.4",
+      "description" : "Kingdom is a 2D sidescrolling strategy/resource management hybrid with a minimalist feel wrapped in a beautiful, modern pixel art aesthetic.",
+      "name" : "Cities: Skyline",
+      "versions" : [ "v1.0.0", "v1.1.0", "v1.2.0" ]
     },
-    "g6" : {
-      "currentVersion" : "v1.0.0",
-      "description" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-      "name" : "The Game 6",
-      "versions" : [ "v0.3.0", "v0.7.0", "v1.0.0" ]
+    "hitman" : {
+      "steamAppId": 236870,
+      "currentVersion" : "v1.0",
+      "description" : "Welcome to the World of Assassination. You are Agent 47, the world's ultimate assassin.",
+      "name" : "Hitman",
+      "versions" : [ "v1.0.0", "v1.1.0", "v1.2.0" ]
     },
-    "g7" : {
-      "currentVersion" : "v1.0.0",
-      "description" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-      "name" : "The Game 7",
-      "versions" : [ "v0.3.0", "v0.7.0", "v1.0.0" ]
+    "darkest_dungeon" : {
+      "steamAppId": 262060,
+      "currentVersion" : "Build #13887",
+      "description" : "Darkest Dungeon is a challenging gothic roguelike turn-based RPG about the psychological stresses of adventuring. Recruit, train, and lead a team of flawed heroes against unimaginable horrors, stress, famine, disease, and the ever-encroaching dark. Can you keep your heroes together when all hope is lost?",
+      "name" : "Darkest Dungeon",
+      "versions" : [ "v1.0.0", "v1.1.0", "v1.2.0" ]
     }
   },
   "issues" : {

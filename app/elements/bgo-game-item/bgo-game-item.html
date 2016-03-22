@@ -12,40 +12,59 @@
     <style>
       :host {
         @apply(--layout-horizontal);
+        height: 225px;
+        padding: 4px;
+        background: white;
+        border: 1px solid #ddd;
+      }
+      a {
+        @apply(--layout-horizontal);
+        @apply(--layout-flex);
+        color: var(--primary-text-color);
+        text-decoration: none;
+      }
+      a:hover {
+        opacity: 0.7;
       }
       iron-image {
-        width: 120px;
-        height: 120px;
+        width: 460px;
+        height: 215px;
       }
       .gameInfo {
+        height: 100%;
         @apply(--layout-flex);
         @apply(--layout-vertical);
         padding: 6px;
+        overflow: auto;
       }
       .gameName {
         @apply(--paper-font-title);
+        overflow: visible;
       }
-      .gameName > .gameVersion {
+      .gameVersion {
         color: var(--secondary-text-color);
         @apply(--paper-font-code2);
       }
       .gameDescription {
-        @apply(--layout-flex);
         @apply(--paper-font-body2);
       }
       iron-icon {
+        width: 24px;
+        height: 24px;
         padding: 6px;
       }
     </style>
-    <iron-image 
-      src="http://lorempixel.com/120/120/abstract">
-    </iron-image>
-    <div class="gameInfo">
-      <span class="gameName">
-        {{game.name}} <span class="gameVersion">({{game.currentVersion}})</span>
-      </span>
-      <span class="gameDescription">{{game.description}}</span>
-    </div>
+    <a data-route="game" href$="{{_gameBaseUrl}}/{{game.__firebaseKey__}}">
+      <iron-image
+        src="http://cdn.akamai.steamstatic.com/steam/apps/{{game.steamAppId}}/header.jpg">
+      </iron-image>
+      <div class="gameInfo">
+        <div class="gameName">
+          {{game.name}} <span class="gameVersion">({{game.currentVersion}})</span>
+        </div>
+        <span class="gameDescription">{{game.description}}</span>
+      </div>
+    </a>
     <iron-icon icon="star"></iron-icon>
   </template>
   <script>
@@ -59,7 +78,14 @@
         game: {
           type: Object,
           value: function() { return {}; }
+        },
+        _gameBaseUrl: {
+          type: String
         }
+      },
+
+      attached: function() {
+        this._gameBaseUrl = bgoApp.baseUrl + 'game';
       }
     });
   })();

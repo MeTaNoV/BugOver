@@ -17,17 +17,8 @@
       iron-list {
         @apply(--layout-flex);
       }
-      a {
-        color: var(--primary-text-color);
-        text-decoration: none;
-      }
-      bgo-game-item {
-        padding: 4px;
-        background: white;
-        border: 1px solid #ddd;
-      }
-      bgo-game-item:hover {
-        opacity: 0.7;
+      h1 {
+        padding: 0 16px;
       }
     </style>
     <firebase-collection
@@ -35,14 +26,10 @@
       location='[[_gamesLocation]]'
       data='{{_games}}'>
     </firebase-collection>
-    <h1>Games list: </h1>
-    <iron-list
-      items='{{_games}}'
-      as='game'>
+    <h1>Games</h1>
+    <iron-list items='{{_games}}' as='game'>
       <template>
-        <a data-route="game" href="{{_gameBaseUrl}}/{{game.__firebaseKey__}}">
-          <bgo-game-item game="[[game]]"></bgo-game-item>
-        </a>
+        <bgo-game-item game="[[game]]"></bgo-game-item>
       </template>
     </iron-list>
   </template>
@@ -60,15 +47,11 @@
         _games: {
           type: Array,
           value: function() { return []; }
-        },
-        _gameBaseUrl: {
-          type: String
         }
       },
 
       attached: function() {
         this._gamesLocation = bgoApp.firebaseUrl + '/games';
-        this._gameBaseUrl = bgoApp.baseUrl + 'game';
       }
     });
 
