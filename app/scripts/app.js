@@ -31,7 +31,7 @@ var bgoApp = {};
   bgoApp.addEventListener('dom-change', function() {
     console.log('Our bgoApp is ready to rock!');
   });
-  
+
   // See https://github.com/Polymer/polymer/issues/1381
   window.addEventListener('WebComponentsReady', function() {
     // imports are loaded and elements have been registered
@@ -67,7 +67,7 @@ var bgoApp = {};
 
   // Scroll page to top and expand header
   bgoApp.scrollPageToTop = function() {
-    bgoApp.$.headerPanelMain.scrollToTop(true);
+    bgoApp.$.mainHeaderPanel.scrollToTop(true);
   };
 
   bgoApp.closeDrawer = function() {

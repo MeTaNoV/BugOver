@@ -2,8 +2,8 @@
 
 <link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout.html">
 
-<link rel="import" href="../bower_components/paper-styles/typography.html">
 <link rel="import" href="../bower_components/paper-styles/color.html">
+<link rel="import" href="../bower_components/paper-styles/typography.html">
 
 <style is="custom-style">
 
@@ -24,9 +24,12 @@
     --secondary-text-color: #737373;
     --disabled-text-color: #9b9b9b;
     --divider-color: #dbdbdb;
+    --error-color: var(--paper-deep-orange-a700);
+
     --primary-color: var(--paper-indigo-500);
     --light-primary-color: var(--paper-indigo-100);
     --dark-primary-color: var(--paper-indigo-700);
+
     --accent-color: var(--paper-pink-a200);
     --light-accent-color: var(--paper-pink-a100);
     --dark-accent-color: var(--paper-pink-a400);
@@ -50,8 +53,13 @@
     @apply(--layout-vertical);
   }
 
-  .space {
-    @apply(--layout-flex);
+  a {
+    color: var(--primary-text-color);
+    text-decoration: none;
+  }
+
+  paper-scroll-header-panel {
+    height: 100%;
   }
 
   #drawerToolbar {
@@ -62,10 +70,6 @@
 
   #drawerToolbar .menu-name {
     @apply(--paper-font-title);
-  }
-
-  paper-scroll-header-panel {
-    height: 100%;
   }
 
   paper-menu {
@@ -93,36 +97,8 @@
     padding: 0 16px;
   }
 
-  #mainToolbar.tall .app-name {
+  #mainToolbar .title {
     @apply(--paper-font-title);
-    /* Required for main area's paper-scroll-header-panel custom condensing transformation */
-    -webkit-transform-origin: left center;
-    transform-origin: left center;
-  }
-
-  #mainToolbar .middle-container,
-  #mainToolbar .bottom-container {
-    @apply(--layout-horizontal);
-    @apply(--layout-center);
-  }
-
-  #mainToolbar .middle-container  {
-    height: 100%;
-    margin-left: 48px;
-  }
-
-  #mainToolbar:not(.tall) .middle-container {
-    font-size: 18px;
-    padding-bottom: 0;
-  }
-
-  #mainToolbar .bottom-container {
-    @apply(--paper-font-subhead);
-
-    margin-left: 48px;
-    /* Required for main area's paper-scroll-header-panel custom condensing transformation */
-    -webkit-transform-origin: left center;
-    transform-origin: left center;
   }
 
   .mainContent {
@@ -149,26 +125,21 @@
   /* Small */
   @media (max-width: 600px) {
 
-    #drawer .paper-toolbar {
+    #drawerToolBar {
       margin-left: 16px;
     }
 
-    #mainToolbar.tall .app-name {
-      font-size: 24px;
-      font-weight: 400;
+    #mainToolbar .app-name {
+      @apply(--paper-font-headline);
     }
 
   }
 
   /* Tablet+ */
   @media (min-width: 601px) {
-
+    /* TODO: fix this... */
     #drawer.paper-drawer-panel > [drawer] {
       border-right: 1px solid rgba(0, 0, 0, 0.14);
-    }
-
-    iron-pages {
-      padding: 48px 62px;
     }
   }
 
@@ -179,7 +150,7 @@
     or remove these breakpoints based on your needs.
 
     http://www.google.com/design/spec/layout/adaptive-ui.html#adaptive-ui-breakpoints
-   */
+  */
 
   /* mobile-small */
   @media all and (min-width: 0) and (max-width: 360px) and (orientation: portrait) { }
