@@ -19,18 +19,27 @@
       iron-list {
         @apply(--layout-flex);
       }
+      bgo-game-item {
+        padding: 4px;
+        background: white;
+        border: 1px solid #ddd;
+      }
+      bgo-game-item:hover {
+        opacity: 0.7;
+      }
+
     </style>
     <firebase-collection
       log
       location='[[_gamesLocation]]'
       data='{{_games}}'>
     </firebase-collection>
-    <h1>Game list: </h1>
+    <h1>Games list: </h1>
     <iron-list
       items='{{_games}}'
       as='game'>
       <template>
-        <div>[[game.name]]</div>
+        <bgo-game-item game=[[game]]></bgo-game-item>
       </template>
     </iron-list>
   </template>

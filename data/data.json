@@ -1,73 +1,107 @@
 {
-  "users": {
-    "user1": {
-      "name": "Mary Chen",
-      "games": { "game1": true },
-      "reputation": 1234,
-      "credits": 23,
-      "votes": {
-        "issue1": true,
-        "issue3": true
-      },
-      "issues": {
-        "issue1": true,
-        "issue2": true
-      },
-      "comments": {
-        "comment1": true,
-        "comment2": true
-      }
-    }
-  },
-
-  "games": {
-    "g1": {
-      "name": "Game 1",
-      "versions": {
-        "0": "v0.3.0",
-        "1": "v0.7.0",
-        "2": "v1.0.0"
-      },
-      "currentVersion": "v1.0.0"
-    },
-    "g2": {
-      "name": "Game 2",
-      "versions": {
-        "0": "v0.3.0",
-        "1": "v0.7.0",
-        "2": "v1.0.0"
-      },
-      "currentVersion": "v1.0.0"
-    }
-  },
-
-  "issues": {
-    "g1": {
-      "i1": {
-        "title": "I am Issue 1",
-        "description": "This is the description of Issue 1",
-        "votes": 3,
-        "game": "game1",
-        "version": "v1.0.0",
-        "state": "open",
-        "reporter": "user1",
-        "followers": {
-          "user2": true,
-          "user3": true
-        },
-        "creation": "date1",
-        "modification": "date2"
-      }
-    }
-  },
-
-  "comments": {
-    "i1": {
+  "comments" : {
+    "i1" : {
       "c1" : {
-        "text": "This is my first comment",
-        "user": "user2",
-        "creation": "date1",
-        "modification": "date2"
+        "creation" : "date1",
+        "modification" : "date2",
+        "text" : "This is my first comment",
+        "user" : "user2"
+      }
+    }
+  },
+  "games" : {
+    "g1" : {
+      "currentVersion" : "v1.0.0",
+      "name" : "Game 1",
+      "description" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "versions" : [ "v0.3.0", "v0.7.0", "v1.0.0" ]
+    },
+    "g2" : {
+      "currentVersion" : "v1.0.0",
+      "name" : "Game 2",
+      "description" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "versions" : [ "v0.3.0", "v0.7.0", "v1.0.0" ]
+    },
+    "g3" : {
+      "currentVersion" : "v1.0.0",
+      "name" : "Game 3",
+      "description" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "versions" : [ "v0.3.0", "v0.7.0", "v1.0.0" ]
+    },
+    "g4" : {
+      "currentVersion" : "v1.0.0",
+      "name" : "The Game 4",
+      "description" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "versions" : [ "v0.3.0", "v0.7.0", "v1.0.0" ]
+    },
+    "g5" : {
+      "currentVersion" : "v1.0.0",
+      "name" : "The Game 5",
+      "description" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "versions" : [ "v0.3.0", "v0.7.0", "v1.0.0" ]
+    },
+    "g6" : {
+      "currentVersion" : "v1.0.0",
+      "name" : "The Game 6",
+      "description" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "versions" : [ "v0.3.0", "v0.7.0", "v1.0.0" ]
+    },
+    "g7" : {
+      "currentVersion" : "v1.0.0",
+      "name" : "The Game 7",
+      "description" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "versions" : [ "v0.3.0", "v0.7.0", "v1.0.0" ]
+    }
+  },
+  "issues" : {
+    "g1" : {
+      "i1" : {
+        "creation" : "date1",
+        "description" : "This is the description of Issue 1",
+        "followers" : {
+          "user2" : true,
+          "user3" : true
+        },
+        "game" : "game1",
+        "modification" : "date2",
+        "reporter" : "user1",
+        "state" : "open",
+        "title" : "I am Issue 1",
+        "version" : "v1.0.0",
+        "votes" : 3
+      }
+    }
+  },
+  "profiles" : {
+    "google:108957518698206301122" : {
+      "displayName" : "Pascal Gula",
+      "email" : "",
+      "firstName" : "Pascal",
+      "info1" : "tret",
+      "info2" : "trertertert",
+      "lastName" : "Gula",
+      "picture" : "https://lh5.googleusercontent.com/-QDWRbpR3WCk/AAAAAAAAAAI/AAAAAAAAyxg/9gXguiMlGlo/photo.jpg"
+    }
+  },
+  "users" : {
+    "user1" : {
+      "comments" : {
+        "comment1" : true,
+        "comment2" : true
+      },
+      "credits" : 23,
+      "games" : {
+        "game1" : true
+      },
+      "issues" : {
+        "issue1" : true,
+        "issue2" : true
+      },
+      "name" : "Mary Chen",
+      "reputation" : 1234,
+      "votes" : {
+        "issue1" : true,
+        "issue3" : true
       }
     }
   }

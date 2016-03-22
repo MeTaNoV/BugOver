@@ -1,0 +1,67 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../../bower_components/iron-image/iron-image.html">
+<link rel="import" href="../../bower_components/iron-icon/iron-icon.html">
+<link rel="import" href="../../bower_components/iron-icons/iron-icons.html">
+
+<link rel="import" href="../bower_components/paper-styles/typography.html">
+
+<dom-module id="bgo-game-item">
+  <template>
+    <style>
+      :host {
+        @apply(--layout-horizontal);
+      }
+      iron-image {
+        width: 120px;
+        height: 120px;
+      }
+      .gameInfo {
+        @apply(--layout-flex);
+        @apply(--layout-vertical);
+        padding: 6px;
+      }
+      .gameName {
+        @apply(--paper-font-title);
+      }
+      .gameName > .gameVersion {
+        color: var(--secondary-text-color);
+        @apply(--paper-font-code2);
+      }
+      .gameDescription {
+        @apply(--layout-flex);
+        @apply(--paper-font-body2);
+      }
+      iron-icon {
+        padding: 6px;
+      }
+    </style>
+    <iron-image 
+      src="http://lorempixel.com/120/120/abstract">
+    </iron-image>
+    <div class="gameInfo">
+      <span class="gameName">
+        {{game.name}} <span class="gameVersion">({{game.currentVersion}})</span>
+      </span>
+      <span class="gameDescription">{{game.description}}</span>
+    </div>
+    <iron-icon icon="star"></iron-icon>
+  </template>
+  <script>
+  (function() {
+    'use strict';
+
+    Polymer({
+      is: 'bgo-game-item',
+
+      properties: {
+        game: {
+          type: Object,
+          value: function() { return {}; }
+        }
+      }
+    });
+  })();
+  </script>
+</dom-module>
