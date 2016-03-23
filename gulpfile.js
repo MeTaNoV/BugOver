@@ -253,7 +253,7 @@ gulp.task('serve', ['lint', 'styles'], function() {
     }
   });
 
-  gulp.watch(['app/**/*.html', '!app/bower_components/**/*.html'], reload);
+  gulp.watch(['app/**/*.html', '!app/bower_components/**/*.html'], ['lint', reload]);
   gulp.watch(['app/styles/**/*.css'], ['styles', reload]);
   gulp.watch(['app/{scripts,elements}/**/{*.js,*.html}'], ['lint', reload]);
   gulp.watch(['app/scripts/**/*.js'], reload);

@@ -43,7 +43,7 @@
       .gameName {
         /* TODO PG: use another custom prop because we are force to overflow: visible */
         @apply(--paper-font-title);
-        overflow: visible; 
+        overflow: visible;
       }
       .gameVersion {
         color: var(--disabled-text-color);
@@ -59,8 +59,7 @@
       }
     </style>
     <firebase-state logged="{{_logged}}"></firebase-state>
-    <firebase-profile profile="{{_user}}"></firebase-profile>
-    <a data-route="game" href$="{{_gameBaseUrl}}/{{game.__firebaseKey__}}">
+    <a data-route="game" href$="{{_computeGameHref(game.__firebaseKey__)}}">
       <iron-image
         sizing="contain"
         src="{{_computeImageSource(game.steamAppId)}}">
@@ -72,7 +71,7 @@
         <span class="gameDescription">{{game.description}}</span>
       </div>
     </a>
-    <template is="dom-if" if="[[_logged]]">
+    <template is="dom-if" if="[[_logged]]" restamp>
       <toggle-icon suffix
         icon="star-border"
         icon-active="star"
@@ -89,17 +88,14 @@
 
       properties: {
         game: {
-          type: Object,
-          value: function() { return {}; }
+          type: Object
         },
-        _gameBaseUrl: {
-          type: String
+        user: {
+          type: Object,
+          notify: true
         },
         _logged: {
           type: Boolean
-        },
-        _user: {
-          type: Object
         },
         _active: {
           type: Boolean
@@ -107,12 +103,12 @@
       },
 
       observers: [
-        '_loggedChanged(_logged, _user)',
-        '_activeChanged(_active, _user)'
+        '_loggedChanged(_logged, user, game)',
+        '_activeChanged(_active, user, game)'
       ],
 
-      attached: function() {
-        this._gameBaseUrl = bgoApp.baseUrl + 'game';
+      _computeGameHref: function(gameKey) {
+        return bgoApp.baseUrl + 'game/' + gameKey;
       },
 
       _computeImageSource: function(steamApiId) {
@@ -121,26 +117,21 @@
                steamApiId + "/header.jpg" : "";
       },
 
-      _activeChanged: function(active, user) {
+      _activeChanged: function(active, user, game) {
         // TODO PG: this should move to an init hook callback for firebase-auth
         if(!user.favorites) {
-          this.set('_user.favorites', {});
+          this.set('user.favorites', {});
         }
-        if (active) {
-          this.set('_user.favorites.' + this.game.__firebaseKey__, true);
-        } else {
-          // TODO PG: we should remove the child key here...
-          this.set('_user.favorites.' + this.game.__firebaseKey__, false);
+        // TODO PG: currently setting false if not active but it would be better to
+        // remove the key...
+        if (active !== this.set('user.favorites.' + game.__firebaseKey__)) {
+          this.set('user.favorites.' + game.__firebaseKey__, active);
         }
       },
 
-      _loggedChanged: function(logged, user) {
-        if (logged === true && 
-            user.favorites && 
-            user.favorites[this.game.__firebaseKey__]) {
-          this._active = true;
-        } else {
-          this._active = false;
+      _loggedChanged: function(logged, user, game) {
+        if (logged === true && user.favorites) {
+          this._active = !!user.favorites[game.__firebaseKey__];
         }
       }
 

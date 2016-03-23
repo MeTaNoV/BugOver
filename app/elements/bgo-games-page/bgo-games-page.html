@@ -35,10 +35,11 @@
       location='[[_gamesLocation]]'
       data='{{_games}}'>
     </firebase-collection>
+    <firebase-profile profile="{{_user}}"></firebase-profile>
     <h1>Games</h1>
     <iron-list items='{{_games}}' as='game'>
       <template>
-        <bgo-game-item game="[[game]]"></bgo-game-item>
+        <bgo-game-item game="[[game]]" user="{{_user}}"></bgo-game-item>
       </template>
     </iron-list>
   </template>
@@ -54,8 +55,10 @@
           type: String
         },
         _games: {
-          type: Array,
-          value: function() { return []; }
+          type: Array
+        },
+        _user: {
+          type: Object
         }
       },
 
