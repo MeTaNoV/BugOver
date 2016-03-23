@@ -2,10 +2,11 @@
 
 <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
 <link rel="import" href="../../bower_components/iron-image/iron-image.html">
-<link rel="import" href="../../bower_components/iron-icon/iron-icon.html">
-<link rel="import" href="../../bower_components/iron-icons/iron-icons.html">
 
 <link rel="import" href="../../bower_components/paper-styles/typography.html">
+
+<link rel="import" href="../../bower_components/firebase-element-extended/firebase-profile-page.html">
+<link rel="import" href="../../bower_components/toggle-icon/toggle-icon.html">
 
 <dom-module id="bgo-game-item">
   <template>
@@ -48,12 +49,13 @@
       .gameDescription {
         @apply(--paper-font-body2);
       }
-      iron-icon {
-        width: 24px;
-        height: 24px;
-        padding: 6px;
+      toggle-icon {
+        --toggle-icon-active: {
+          color: var(--paper-yellow-700);
+        };
       }
     </style>
+    <firebase-profile profile="{{_user}}"></firebase-profile>
     <a data-route="game" href$="{{_gameBaseUrl}}/{{game.__firebaseKey__}}">
       <iron-image
         src="{{_computeImageSource(game.steamAppId)}}">
@@ -65,7 +67,11 @@
         <span class="gameDescription">{{game.description}}</span>
       </div>
     </a>
-    <iron-icon icon="star"></iron-icon>
+    <toggle-icon suffix
+      icon="star-border"
+      icon-active="star"
+      active="{{_computeActiveFavorite(_user.favorite)}}" noink>
+    </toggle-icon>
   </template>
   <script>
   (function() {
@@ -81,6 +87,9 @@
         },
         _gameBaseUrl: {
           type: String
+        },
+        _user: {
+          type: Object
         }
       },
 
@@ -92,6 +101,11 @@
         return steamApiId ?
                "http://cdn.akamai.steamstatic.com/steam/apps/" +
                steamApiId + "/header.jpg" : "";
+      },
+
+      _computeActiveFavorite: function(favorites) {
+        favorites = true;
+        return favorites;
       }
 
     });
