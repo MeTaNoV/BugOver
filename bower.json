@@ -4,7 +4,7 @@
   "dependencies": {
     "iron-elements": "PolymerElements/iron-elements#^1.0.0",
     "neon-elements": "PolymerElements/neon-elements#^1.0.0",
-    "firebase-element": "GoogleWebComponents/firebase-element#^1.0.0",
+    "firebase-element": "GoogleWebComponents/firebase-element#master",
     "firebase-element-extended": "firebase-element-extended#master",
     "page": "visionmedia/page.js#~1.6.4",
     "paper-elements": "PolymerElements/paper-elements#^1.0.1",

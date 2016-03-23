@@ -5,7 +5,9 @@
 
 <link rel="import" href="../../bower_components/paper-styles/typography.html">
 
-<link rel="import" href="../../bower_components/firebase-element-extended/firebase-profile-page.html">
+<link rel="import" href="../../bower_components/firebase-element-extended/firebase-state.html">
+<link rel="import" href="../../bower_components/firebase-element-extended/firebase-profile.html">
+
 <link rel="import" href="../../bower_components/toggle-icon/toggle-icon.html">
 
 <dom-module id="bgo-game-item">
@@ -13,7 +15,7 @@
     <style>
       :host {
         @apply(--layout-horizontal);
-        height: 225px;
+        height: 160px;
         padding: 4px;
         background: white;
         border: 1px solid #ddd;
@@ -28,8 +30,8 @@
         opacity: 0.7;
       }
       iron-image {
-        width: 460px;
-        height: 215px;
+        width: 325px;
+        height: 150px;
       }
       .gameInfo {
         height: 100%;
@@ -39,8 +41,9 @@
         overflow: auto;
       }
       .gameName {
+        /* TODO PG: use another custom prop because we are force to overflow: visible */
         @apply(--paper-font-title);
-        overflow: visible;
+        overflow: visible; 
       }
       .gameVersion {
         color: var(--disabled-text-color);
@@ -55,9 +58,11 @@
         };
       }
     </style>
+    <firebase-state logged="{{_logged}}"></firebase-state>
     <firebase-profile profile="{{_user}}"></firebase-profile>
     <a data-route="game" href$="{{_gameBaseUrl}}/{{game.__firebaseKey__}}">
       <iron-image
+        sizing="contain"
         src="{{_computeImageSource(game.steamAppId)}}">
       </iron-image>
       <div class="gameInfo">
@@ -67,11 +72,13 @@
         <span class="gameDescription">{{game.description}}</span>
       </div>
     </a>
-    <toggle-icon suffix
-      icon="star-border"
-      icon-active="star"
-      active="{{_computeActiveFavorite(_user.favorite)}}" noink>
-    </toggle-icon>
+    <template is="dom-if" if="[[_logged]]">
+      <toggle-icon suffix
+        icon="star-border"
+        icon-active="star"
+        active="{{_active}}" noink>
+      </toggle-icon>
+    </template>
   </template>
   <script>
   (function() {
@@ -88,10 +95,21 @@
         _gameBaseUrl: {
           type: String
         },
+        _logged: {
+          type: Boolean
+        },
         _user: {
           type: Object
+        },
+        _active: {
+          type: Boolean
         }
       },
+
+      observers: [
+        '_loggedChanged(_logged, _user)',
+        '_activeChanged(_active, _user)'
+      ],
 
       attached: function() {
         this._gameBaseUrl = bgoApp.baseUrl + 'game';
@@ -103,9 +121,27 @@
                steamApiId + "/header.jpg" : "";
       },
 
-      _computeActiveFavorite: function(favorites) {
-        favorites = true;
-        return favorites;
+      _activeChanged: function(active, user) {
+        // TODO PG: this should move to an init hook callback for firebase-auth
+        if(!user.favorites) {
+          this.set('_user.favorites', {});
+        }
+        if (active) {
+          this.set('_user.favorites.' + this.game.__firebaseKey__, true);
+        } else {
+          // TODO PG: we should remove the child key here...
+          this.set('_user.favorites.' + this.game.__firebaseKey__, false);
+        }
+      },
+
+      _loggedChanged: function(logged, user) {
+        if (logged === true && 
+            user.favorites && 
+            user.favorites[this.game.__firebaseKey__]) {
+          this._active = true;
+        } else {
+          this._active = false;
+        }
       }
 
     });
