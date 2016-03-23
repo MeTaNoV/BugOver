@@ -82,19 +82,19 @@
         </paper-toolbar>
         <!-- Drawer Content -->
         <paper-menu class="app-menu" attr-for-selected="data-route" selected="[[route]]">
-          <a data-route="home" href="{{baseUrl}}">
+          <a data-route="home" href$="{{baseUrl}}">
             <iron-icon icon="home"></iron-icon>
             <span>Home</span>
           </a>
-          <a data-route="games" href="{{baseUrl}}games">
+          <a data-route="games" href$="{{baseUrl}}games">
             <iron-icon icon="info"></iron-icon>
             <span>Games</span>
           </a>
-          <a data-route="profile" href="{{baseUrl}}profile">
+          <a data-route="profile" href$="{{baseUrl}}profile">
             <iron-icon icon="info"></iron-icon>
             <span>Profile</span>
           </a>
-          <a data-route="contact" href="{{baseUrl}}contact">
+          <a data-route="contact" href$="{{baseUrl}}contact">
             <iron-icon icon="mail"></iron-icon>
             <span>Contact</span>
           </a>

@@ -14,17 +14,29 @@
       :host {
         @apply(--layout-vertical);
         @apply(--layout-flex);
+        background-repeat: no-repeat;
+        background-position: top center;
+        background-color: var(--primary-background-color);
+      }
+      h1 {
+        max-width: 1024px;
+        color: var(--secondary-text-color);
+        padding: 0 16px;
+      }
+      a {
+        color: var(--secondary-text-color);
+        text-decoration: none;
       }
       iron-list {
         @apply(--layout-flex);
-      }
-      a {
-        color: var(--primary-text-color);
-        text-decoration: none;
+        --iron-list-items-container: {
+          max-width: 1024px;
+          margin: 0 auto;
+        };
       }
       bgo-issue-item {
         padding: 4px;
-        background: white;
+        background: var(--secondary-background-color);
         border: 1px solid #ddd;
       }
       bgo-issue-item:hover {
@@ -41,7 +53,7 @@
       location='[[_issuesLocation]]'
       data='{{_issues}}'>
     </firebase-collection>
-    <h1>Welcome to {{_game.name}}</h1>
+    <h1><a href$="[[_gamesBaseUrl]]">Games</a> > {{_game.name}}</h1>
     <iron-list
       items='{{_issues}}'
       as='issue'>
@@ -64,6 +76,9 @@
         _game: {
           type: Object
         },
+        _gamesBaseUrl: {
+          type: String
+        },
         _gameLocation: {
           type: String,
           computed: '_computeGameLocation(gameKey)'
@@ -76,6 +91,20 @@
           type: Array,
           value: function() { return []; }
         }
+      },
+
+      observers: [
+        '_updateBackgroundImage(_game.steamAppId)'
+      ],
+
+      attached: function() {
+        this._gamesBaseUrl = bgoApp.baseUrl + 'games';
+      },
+
+      _updateBackgroundImage: function(steamAppId) {
+        this.style.backgroundImage = "url('http://cdn.akamai.steamstatic.com/steam/apps/" +
+                                     steamAppId +
+                                     "/page_bg_generated_v6b.jpg')";
       },
 
       _computeGameLocation: function(gameKey) {

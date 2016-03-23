@@ -20,8 +20,9 @@
 
   :root {
     --primary-text-color: var(--paper-grey-900);
-    --primary-background-color: #ffffff;
-    --secondary-text-color: #737373;
+    --primary-background-color: var(--primary-color);
+    --secondary-text-color: #ffffff;
+    --secondary-background-color: #ffffff;
     --disabled-text-color: #9b9b9b;
     --divider-color: #dbdbdb;
     --error-color: var(--paper-deep-orange-a700);
@@ -37,7 +38,7 @@
     /* Components */
 
     /* paper-drawer-panel */
-    --drawer-menu-color: #ffffff;
+    --drawer-menu-color: var(--primary-background-color);
     --drawer-border-color: 1px solid #ccc;
     --drawer-toolbar-border-color: 1px solid rgba(0, 0, 0, 0.22);
 
@@ -63,7 +64,7 @@
   }
 
   #drawerToolbar {
-    color: var(--secondary-text-color);
+    color: var(--primary-text-color);
     background-color: var(--drawer-menu-color);
     border-bottom: var(--drawer-toolbar-border-color);
   }
@@ -113,7 +114,6 @@
   }
 
   section {
-    max-width: 1024px;
     @apply(--layout-horizontal);
     @apply(--layout-flex);
   }

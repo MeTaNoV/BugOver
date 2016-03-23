@@ -42,7 +42,7 @@
         overflow: visible;
       }
       .gameVersion {
-        color: var(--secondary-text-color);
+        color: var(--disabled-text-color);
         @apply(--paper-font-code2);
       }
       .gameDescription {
@@ -56,7 +56,7 @@
     </style>
     <a data-route="game" href$="{{_gameBaseUrl}}/{{game.__firebaseKey__}}">
       <iron-image
-        src="http://cdn.akamai.steamstatic.com/steam/apps/{{game.steamAppId}}/header.jpg">
+        src="{{_computeImageSource(game.steamAppId)}}">
       </iron-image>
       <div class="gameInfo">
         <div class="gameName">
@@ -86,7 +86,14 @@
 
       attached: function() {
         this._gameBaseUrl = bgoApp.baseUrl + 'game';
+      },
+
+      _computeImageSource: function(steamApiId) {
+        return steamApiId ?
+               "http://cdn.akamai.steamstatic.com/steam/apps/" +
+               steamApiId + "/header.jpg" : "";
       }
+
     });
   })();
   </script>
