@@ -80,19 +80,19 @@
         <paper-menu attr-for-selected="data-route" selected="[[route]]">
           <!-- Home page -->
           <a data-route="home" href$="{{baseUrl}}">
-            <iron-icon icon="home"></iron-icon>
+            <iron-icon icon="bgo:home"></iron-icon>
             <span>Home</span>
           </a>
           <!-- Games page -->
           <a data-route="games" href$="{{baseUrl}}games">
-            <iron-icon icon="info"></iron-icon>
+            <iron-icon icon="bgo:games"></iron-icon>
             <span>Games</span>
           </a>
           <!-- My Games page -->
           <template is="dom-if" if="{{logged}}">
             <paper-submenu opened>
               <div class="menu-trigger">
-                <iron-icon icon="info"></iron-icon>
+                <iron-icon icon="bgo:favorite"></iron-icon>
                 <span>My Games</span>
               </div>
               <paper-menu class="menu-content sublist">
@@ -100,7 +100,7 @@
                           items="{{computeArrayKeys(profile.favorites)}}"
                           as="favorite">
                   <a class="menu-content" data-route="game" href$="{{baseUrl}}game/{{favorite}}">
-                    <iron-icon icon="info"></iron-icon>
+                    <iron-icon icon="bgo:game"></iron-icon>
                     <span>{{favorite}}</span>
                   </a>
                 </template>
@@ -109,7 +109,7 @@
           </template>
           <!-- Profile page -->
           <a data-route="profile" href$="{{baseUrl}}profile">
-            <iron-icon icon="info"></iron-icon>
+            <iron-icon icon="bgo:account-circle"></iron-icon>
             <span>Profile</span>
           </a>
           <!-- Contact page -->

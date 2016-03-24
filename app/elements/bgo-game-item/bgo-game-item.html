@@ -17,7 +17,6 @@
         @apply(--layout-horizontal);
         height: 160px;
         padding: 4px;
-        background: white;
         border: 1px solid #ddd;
       }
       a {
@@ -73,8 +72,8 @@
     </a>
     <template is="dom-if" if="[[_logged]]" restamp>
       <toggle-icon suffix
-        icon="star-border"
-        icon-active="star"
+        icon="bgo:star-border"
+        icon-active="bgo:star"
         active="{{_active}}" noink>
       </toggle-icon>
     </template>
