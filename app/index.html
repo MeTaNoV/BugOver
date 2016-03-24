@@ -66,7 +66,7 @@
       <b user>-- or provide your email and password : --</b>
     </firebase-auth-dialog>
 
-    <firebase-state logged="{{logged}}" user="{{user}}"></firebase-state>
+    <firebase-state logged="{{logged}}" user="{{user}}" profile="{{profile}}"></firebase-state>
 
     <paper-drawer-panel id="paperDrawerPanel" responsive-width="840px">
 
@@ -78,18 +78,41 @@
         </paper-toolbar>
         <!-- Drawer Content -->
         <paper-menu attr-for-selected="data-route" selected="[[route]]">
+          <!-- Home page -->
           <a data-route="home" href$="{{baseUrl}}">
             <iron-icon icon="home"></iron-icon>
             <span>Home</span>
           </a>
+          <!-- Games page -->
           <a data-route="games" href$="{{baseUrl}}games">
             <iron-icon icon="info"></iron-icon>
             <span>Games</span>
           </a>
+          <!-- My Games page -->
+          <template is="dom-if" if="{{logged}}">
+            <paper-submenu opened>
+              <div class="menu-trigger">
+                <iron-icon icon="info"></iron-icon>
+                <span>My Games</span>
+              </div>
+              <paper-menu class="menu-content sublist">
+                <template is="dom-repeat"
+                          items="{{computeArrayKeys(profile.favorites)}}"
+                          as="favorite">
+                  <a class="menu-content" data-route="game" href$="{{baseUrl}}game/{{favorite}}">
+                    <iron-icon icon="info"></iron-icon>
+                    <span>{{favorite}}</span>
+                  </a>
+                </template>
+              </paper-menu>
+            </paper-submenu>
+          </template>
+          <!-- Profile page -->
           <a data-route="profile" href$="{{baseUrl}}profile">
             <iron-icon icon="info"></iron-icon>
             <span>Profile</span>
           </a>
+          <!-- Contact page -->
           <a data-route="contact" href$="{{baseUrl}}contact">
             <iron-icon icon="mail"></iron-icon>
             <span>Contact</span>
@@ -114,14 +137,12 @@
                 tabindex="-1">
               </bgo-home-page>
             </section>
-
             <section data-route="games">
               <bgo-games-page
                 class="focus-target"
                 tabindex="-1">
               </bgo-games-page>
             </section>
-
             <section data-route="game-page">
               <bgo-game-page
                 class="focus-target"

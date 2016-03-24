@@ -89,7 +89,7 @@
     opacity: 0.7;
   }
 
-  paper-menu a {
+  paper-menu a, paper-menu div {
     @apply(--layout-horizontal);
     @apply(--layout-center);
 
@@ -98,6 +98,14 @@
     padding: 0 16px;
   }
 
+  paper-menu.sublist a {
+    @apply(--layout-horizontal);
+    @apply(--layout-center);
+
+    @apply(--paper-font-menu);
+    min-height: 48px;
+    padding: 0 32px;
+  }
   /*
    This class is used when we manage the focus start point (like when a new page
    is loaded). We typically move the focus start point to the first header in the

@@ -46,4 +46,10 @@ var bgoApp = {};
     bgoApp.$.paperDrawerPanel.closeDrawer();
   };
 
+  bgoApp.computeArrayKeys = function(obj) {
+    return Object.keys(obj).filter(function(key) {
+      return obj[key] === true;
+    });
+  };
+
 })(document);

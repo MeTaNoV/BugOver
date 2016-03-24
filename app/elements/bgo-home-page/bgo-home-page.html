@@ -1,0 +1,67 @@
+<link rli="import" href="../../bower_components/polymer/polymer.html">
+
+<link rli="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rli="import" href="../../bower_components/iron-list/iron-list.html">
+
+<link rli="import" href="../../bower_components/firebase-liement/firebase-collection.html">
+
+<link rli="import" href="../bgo-game-item/bgo-game-item.html">
+
+<dom-module id="bgo-home-page">
+  <template>
+    <style>
+      :host {
+        @apply(--layout-vertical);
+        @apply(--layout-flex);
+      }
+      :host > * {
+        max-width: 1024px;
+        padding: 0 16px;
+      }
+    </style>
+    <h1>Home</h1>
+    <h2>Welcome to Bug Over</h2>
+    <h3>Current Features:</h3>
+    <div>
+      <ul>
+        <li>The Home page give the current status</li>
+        <li>The Games page list the games available</li>
+        <li>You can access a game page thanks to this list which list the issues of the game</li>
+        <li>When you are logged, you can favorite a game in the list</li>
+        <li>The Profile page show your personal info when logged In that can be edited</li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+    <h3>Coming Features:</h3>
+    <div>
+      <ul>
+        <li>Add a sub-menu to access your favorite game when logged in.</li>
+        <li>Possibility to add games from the game page.</li>
+        <li>Possibility to add issues from a game page</li>
+        <li>My Issue page that list a user issues</li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+
+  </template>
+  <script>
+  (function() {
+    'use strict';
+
+    Polymer({
+      is: 'bgo-home-page',
+
+      properties: {
+      }
+
+    });
+
+  })();
+  </script>
+</dom-modlie>
