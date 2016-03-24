@@ -1,0 +1,103 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<link rel="import" href="../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../../bower_components/paper-dialog-behavior/paper-dialog-behavior.html">
+<link rel="import" href="../../bower_components/paper-dialog-behavior/paper-dialog-shared-styles.html">
+<link rel="import" href="../../bower_components/paper-input/paper-input.html">
+
+<link rel="import" href="../../bower_components/neon-animation/neon-animation-runner-behavior.html">
+
+<dom-module id="bgo-add-game-dialog">
+  <template>
+    <style include="paper-dialog-shared-styles"></style>
+
+    <style is="custom-style">
+      :host {
+        display: block;
+      }
+    </style>
+
+    <h2>Add a Game</h2>
+
+    <paper-input id="gameId" label="Game Steam ID"></paper-input>
+    <paper-input id="gameName" label="Game Name"></paper-input>
+    <paper-input id="gameVersion" label="Game Version"></paper-input>
+    <paper-input id="gameDesc" label="Game Description"></paper-input>
+
+    <div class="buttons">
+      <paper-button dialog-confirm raised
+                    disabled="[[_computeConfirmDisabled()]]"
+                    on-tap="_handleConfirm">
+        Add Game
+      </paper-button>
+      <paper-button dialog-dismiss raised>
+        Cancel
+      </paper-button>
+    </div>
+  </template>
+  <script>
+    (function() {
+      Polymer({
+        is: 'bgo-add-game-dialog',
+
+        behaviors: [
+          Polymer.PaperDialogBehavior,
+          Polymer.NeonAnimationRunnerBehavior
+        ],
+
+        listeners: {
+          'neon-animation-finish': '_onNeonAnimationFinish'
+        },
+
+        properties: {
+          game: {
+            type: Object,
+            readOnly: true,
+            notify: true
+          }
+        },
+
+        _renderOpened: function() {
+          if (this.withBackdrop) {
+            this.backdropElement.open();
+          }
+          this.playAnimation('entry');
+        },
+
+        _renderClosed: function() {
+          if (this.withBackdrop) {
+            this.backdropElement.close();
+          }
+          this.playAnimation('exit');
+        },
+
+        _onNeonAnimationFinish: function() {
+          if (this.opened) {
+            this._finishRenderOpened();
+          } else {
+            this._finishRenderClosed();
+          }
+          this.$.gameId.value = "";
+          this.$.gameName.value = "";
+          this.$.gameVersion.value = "";
+          this.$.gameDesc.value = "";
+        },
+
+        _computeConfirmDisabled: function() {
+          // TODO PG: add checks
+          return false;
+        },
+
+        _handleConfirm: function() {
+          var game = {};
+          game.steamAppId = Number(this.$.gameId.value);
+          game.name = this.$.gameName.value;
+          game.currentVersion = this.$.gameVersion.value;
+          game.description = this.$.gameDesc.value;
+          this._setGame(game);
+        }
+      });
+    }());
+  </script>
+</dom-module>
+

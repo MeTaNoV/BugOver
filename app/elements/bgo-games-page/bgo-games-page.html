@@ -7,6 +7,7 @@
 
 <link rel="import" href="../../bower_components/firebase-element/firebase-collection.html">
 
+<link rel="import" href="../bgo-add-game-dialog/bgo-add-game-dialog.html">
 <link rel="import" href="../bgo-game-item/bgo-game-item.html">
 
 <dom-module id="bgo-games-page">
@@ -44,17 +45,28 @@
     </style>
     <firebase-collection
       log
+      id="gameCollection"
       location='[[_gamesLocation]]'
       data='{{_games}}'>
     </firebase-collection>
     <firebase-profile profile="{{_user}}"></firebase-profile>
+    <!-- Navigation bar -->
     <h1>
       <a href$="[[_baseUrl]]">Home</a> >
       Games
     </h1>
+    <!-- Action bar -->
     <div class="separation">
-      <paper-fab class="add" icon="bgo:add" raised></paper-fab>
+      <bgo-add-game-dialog
+        id="addDialog" modal
+        on-game-changed="_addHandle">
+      </bgo-add-game-dialog>
+      <paper-fab
+        class="add" icon="bgo:add" raised
+        on-tap="_addAction">
+      </paper-fab>
     </div>
+    <!-- Content -->
     <iron-list items='{{_games}}' as='game'>
       <template strip-whitespace>
         <bgo-game-item game="[[game]]" user="{{_user}}"></bgo-game-item>
@@ -86,6 +98,15 @@
       attached: function() {
         this._baseUrl = bgoApp.baseUrl;
         this._gamesLocation = bgoApp.firebaseUrl + '/games';
+      },
+
+      _addAction: function() {
+        this.$.addDialog.open();
+      },
+
+      _addHandle: function() {
+        // TODO refactor...
+        this.$.gameCollection.add(this.$.addDialog.game);
       }
     });
 
