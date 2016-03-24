@@ -11,7 +11,7 @@
 <link rel="import" href="../../bower_components/toggle-icon/toggle-icon.html">
 
 <dom-module id="bgo-game-item">
-  <template>
+  <template strip-whitespace>
     <style>
       :host {
         @apply(--layout-horizontal);
@@ -70,7 +70,7 @@
         <span class="gameDescription">{{game.description}}</span>
       </div>
     </a>
-    <template is="dom-if" if="[[_logged]]" restamp>
+    <template is="dom-if" if="[[_logged]]" restamp strip-whitespace>
       <toggle-icon suffix
         icon="bgo:star-border"
         icon-active="bgo:star"

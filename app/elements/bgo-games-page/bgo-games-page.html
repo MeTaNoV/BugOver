@@ -3,24 +3,43 @@
 <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
 <link rel="import" href="../../bower_components/iron-list/iron-list.html">
 
+<link rel="import" href="../../bower_components/paper-fab/paper-fab.html">
+
 <link rel="import" href="../../bower_components/firebase-element/firebase-collection.html">
 
 <link rel="import" href="../bgo-game-item/bgo-game-item.html">
 
 <dom-module id="bgo-games-page">
-  <template>
+  <template strip-whitespace>
     <style>
       :host {
         @apply(--layout-vertical);
         @apply(--layout-flex);
       }
       h1 {
+        color: var(--primary-text-color);
         padding: 0 16px;
+      }
+      a {
+        color: var(--primary-text-color);
+        text-decoration: none;
+      }
+      .separation {
+        margin-top: 22px;
+        border-top: 2px solid #ddd;
+        border-bottom: 2px solid #fff;
+      }
+      .add {
+        position: relative;
+        top: -29px;
+        left: 80px;
       }
       iron-list {
         @apply(--layout-flex);
-      }
-      bgo-game-item {
+        --iron-list-items-container: {
+          margin: 0 auto;
+          max-width: 840px;
+        };
       }
     </style>
     <firebase-collection
@@ -29,9 +48,15 @@
       data='{{_games}}'>
     </firebase-collection>
     <firebase-profile profile="{{_user}}"></firebase-profile>
-    <h1>Games</h1>
+    <h1>
+      <a href$="[[_baseUrl]]">Home</a> >
+      Games
+    </h1>
+    <div class="separation">
+      <paper-fab class="add" icon="bgo:add" raised></paper-fab>
+    </div>
     <iron-list items='{{_games}}' as='game'>
-      <template>
+      <template strip-whitespace>
         <bgo-game-item game="[[game]]" user="{{_user}}"></bgo-game-item>
       </template>
     </iron-list>
@@ -44,6 +69,9 @@
       is: 'bgo-games-page',
 
       properties: {
+        _baseUrl: {
+          type: String
+        },
         _gamesLocation: {
           type: String
         },
@@ -56,6 +84,7 @@
       },
 
       attached: function() {
+        this._baseUrl = bgoApp.baseUrl;
         this._gamesLocation = bgoApp.firebaseUrl + '/games';
       }
     });

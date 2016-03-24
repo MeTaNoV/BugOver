@@ -3,13 +3,15 @@
 <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
 <link rel="import" href="../../bower_components/iron-list/iron-list.html">
 
+<link rel="import" href="../../bower_components/paper-fab/paper-fab.html">
+
 <link rel="import" href="../../bower_components/firebase-element/firebase-collection.html">
 <link rel="import" href="../../bower_components/firebase-element/firebase-document.html">
 
 <link rel="import" href="../bgo-issue-item/bgo-issue-item.html">
 
 <dom-module id="bgo-game-page">
-  <template>
+  <template strip-whitespace>
     <style>
       :host {
         @apply(--layout-vertical);
@@ -24,6 +26,21 @@
       a {
         color: var(--secondary-text-color);
         text-decoration: none;
+      }
+      .separation {
+        margin-top: 22px;
+        border-top: 2px solid #ddd;
+        border-bottom: 2px solid transparent;
+      }
+      .add, .edit {
+        position: relative;
+        top: -29px;
+      }
+      .edit {
+        left: 80px;
+      }
+      .add {
+        left: 120px;
       }
       iron-list {
         @apply(--layout-flex);
@@ -50,11 +67,19 @@
       location='[[_issuesLocation]]'
       data='{{_issues}}'>
     </firebase-collection>
-    <h1><a href$="[[_gamesBaseUrl]]">Games</a> > {{_game.name}}</h1>
+    <h1>
+      <a href$="[[_baseUrl]]">Home</a> >
+      <a href$="[[_gamesBaseUrl]]">Games</a> >
+      {{_game.name}}
+    </h1>
+    <div class="separation">
+      <paper-fab class="edit" icon="bgo:edit" raised></paper-fab>
+      <!-- <paper-fab class="add" icon="bgo:add" raised></paper-fab> -->
+    </div>
     <iron-list
       items='{{_issues}}'
       as='issue'>
-      <template>
+      <template strip-whitespace>
         <bgo-issue-item issue="[[issue]]"></bgo-issue-item>
       </template>
     </iron-list>
@@ -72,6 +97,9 @@
         },
         _game: {
           type: Object
+        },
+        _baseUrl: {
+          type: String
         },
         _gamesBaseUrl: {
           type: String
@@ -95,6 +123,7 @@
       ],
 
       attached: function() {
+        this._baseUrl = bgoApp.baseUrl;
         this._gamesBaseUrl = bgoApp.baseUrl + 'games';
       },
 

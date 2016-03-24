@@ -52,7 +52,7 @@
   <span id="browser-sync-binding"></span>
   <!-- endbuild -->
 
-  <template is="dom-bind" id="bgoApp">
+  <template is="dom-bind" id="bgoApp" strip-whitespace>
     <firebase-auth-manager location="[[firebaseUrl]]"></firebase-auth-manager>
 
     <firebase-auth-dialog entry-animation="scale-up-animation"
@@ -89,7 +89,7 @@
             <span>Games</span>
           </a>
           <!-- My Games page -->
-          <template is="dom-if" if="{{logged}}">
+          <template is="dom-if" if="{{logged}}" strip-whitespace>
             <paper-submenu opened>
               <div class="menu-trigger">
                 <iron-icon icon="bgo:favorite"></iron-icon>
@@ -98,7 +98,7 @@
               <paper-menu class="menu-content sublist">
                 <template is="dom-repeat"
                           items="{{computeArrayKeys(profile.favorites)}}"
-                          as="favorite">
+                          as="favorite" strip-whitespace>
                   <a class="menu-content" data-route="game" href$="{{baseUrl}}game/{{favorite}}">
                     <iron-icon icon="bgo:game"></iron-icon>
                     <span>{{favorite}}</span>
