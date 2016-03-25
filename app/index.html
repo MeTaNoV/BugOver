@@ -53,7 +53,7 @@
   <!-- endbuild -->
 
   <template is="dom-bind" id="bgoApp" strip-whitespace>
-    <firebase-auth-manager location="[[firebaseUrl]]"></firebase-auth-manager>
+    <firebase-auth-manager location="[[firebaseLocation]]"></firebase-auth-manager>
 
     <firebase-auth-dialog entry-animation="scale-up-animation"
                           exit-animation="fade-out-animation"
@@ -96,12 +96,21 @@
                 <span>My Games</span>
               </div>
               <paper-menu class="menu-content sublist">
+                <!-- TODO eventually integrate custom instance properties if they land -->
+                <!-- from Issue: https://github.com/Polymer/polymer/issues/3534 -->
+                <!-- currently adding it manually in polymer.html:4119 -->
+                <!-- this._instanceProps["_gameName"] = true; -->
                 <template is="dom-repeat"
-                          items="{{computeArrayKeys(profile.favorites)}}"
+                          items="[[computeArrayKeys(profile.favorites)]]"
                           as="favorite" strip-whitespace>
-                  <a class="menu-content" data-route="game" href$="{{baseUrl}}game/{{favorite}}">
+                  <firebase-document
+                    log
+                    location="[[computeGameNameLocation(favorite)]]"
+                    data='{{_gameName}}'>
+                  </firebase-document>
+                  <a class="menu-content" data-route="game" href$="[[computeGameUrl(favorite)]]">
                     <iron-icon icon="bgo:game"></iron-icon>
-                    <span>{{favorite}}</span>
+                    <span>[[_gameName]]</span>
                   </a>
                 </template>
               </paper-menu>

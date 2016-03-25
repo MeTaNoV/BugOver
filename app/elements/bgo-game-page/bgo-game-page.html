@@ -70,7 +70,7 @@
     <h1>
       <a href$="[[_baseUrl]]">Home</a> >
       <a href$="[[_gamesBaseUrl]]">Games</a> >
-      {{_game.name}}
+      [[_game.name]]
     </h1>
     <div class="separation">
       <paper-fab class="edit" icon="bgo:edit" raised></paper-fab>
@@ -134,11 +134,11 @@
       },
 
       _computeGameLocation: function(gameKey) {
-        return bgoApp.firebaseUrl + '/games/' + gameKey;
+        return bgoApp.computeGameLocation(gameKey);
       },
 
       _computeIssuesLocation: function(gameKey) {
-        return bgoApp.firebaseUrl + '/issues/' + gameKey;
+        return bgoApp.computeIssuesLocation(gameKey);
       }
     });
 

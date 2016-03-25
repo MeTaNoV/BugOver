@@ -17,7 +17,7 @@ var bgoApp = {};
     // bgoApp.baseUrl = '/polymer-starter-kit/';
   }
 
-  bgoApp.firebaseUrl = 'https://bugover.firebaseio.com';
+  bgoApp.firebaseLocation = 'https://bugover.firebaseio.com';
 
   bgoApp.displayInstalledToast = function() {
     // Check to make sure caching is actually enabled—it won't be in the dev environment.
@@ -51,5 +51,22 @@ var bgoApp = {};
       return obj[key] === true;
     });
   };
+
+  bgoApp.computeGameLocation = function(gameKey) {
+    return bgoApp.firebaseLocation + "/games/" + gameKey;
+  };
+
+  bgoApp.computeGameNameLocation = function(gameKey) {
+    return bgoApp.computeGameLocation(gameKey) + "/name";
+  };
+
+  bgoApp.computeIssuesLocation = function(issueKey) {
+    return bgoApp.firebaseLocation + "/issues/" + issueKey;
+  };
+
+  bgoApp.computeGameUrl = function(gameKey) {
+    return bgoApp.baseUrl + "game/" + gameKey;
+  };
+
 
 })(document);
