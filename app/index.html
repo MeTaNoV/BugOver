@@ -88,8 +88,8 @@
             <iron-icon icon="bgo:games"></iron-icon>
             <span>Games</span>
           </a>
-          <!-- My Games page -->
           <template is="dom-if" if="{{logged}}" strip-whitespace>
+            <!-- My Games page -->
             <paper-submenu opened>
               <div class="menu-trigger">
                 <iron-icon icon="bgo:favorite"></iron-icon>
@@ -115,6 +115,11 @@
                 </template>
               </paper-menu>
             </paper-submenu>
+            <!-- My issues page -->
+            <a data-route="games" href$="{{baseUrl}}myIssues">
+              <iron-icon icon="bgo:games"></iron-icon>
+              <span>MyIssues</span>
+            </a>
           </template>
           <!-- Profile page -->
           <a data-route="profile" href$="{{baseUrl}}profile">

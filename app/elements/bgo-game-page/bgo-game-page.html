@@ -8,6 +8,7 @@
 <link rel="import" href="../../bower_components/firebase-element/firebase-collection.html">
 <link rel="import" href="../../bower_components/firebase-element/firebase-document.html">
 
+<link rel="import" href="../bgo-add-issue-dialog/bgo-add-issue-dialog.html">
 <link rel="import" href="../bgo-issue-item/bgo-issue-item.html">
 
 <dom-module id="bgo-game-page">
@@ -36,10 +37,10 @@
         position: relative;
         top: -29px;
       }
-      .edit {
+      .add {
         left: 80px;
       }
-      .add {
+      .edit {
         left: 120px;
       }
       iron-list {
@@ -64,21 +65,30 @@
     </firebase-document>
     <firebase-collection
       log
+      id="issueCollection"
       location='[[_issuesLocation]]'
       data='{{_issues}}'>
     </firebase-collection>
+    <!-- Navigation bar -->
     <h1>
       <a href$="[[_baseUrl]]">Home</a> >
       <a href$="[[_gamesBaseUrl]]">Games</a> >
       [[_game.name]]
     </h1>
+    <!-- Action bar -->
     <div class="separation">
-      <paper-fab class="edit" icon="bgo:edit" raised></paper-fab>
-      <!-- <paper-fab class="add" icon="bgo:add" raised></paper-fab> -->
+      <bgo-add-issue-dialog
+        id="addDialog" modal
+        on-issue-changed="_addHandle">
+      </bgo-add-issue-dialog>
+      <!-- <paper-fab class="edit" icon="bgo:edit" raised></paper-fab> -->
+      <paper-fab 
+        class="add" icon="bgo:add" raised
+        on-tap="_addAction">
+      </paper-fab>
     </div>
-    <iron-list
-      items='{{_issues}}'
-      as='issue'>
+    <!-- Issues  -->
+    <iron-list items='{{_issues}}' as='issue'>
       <template strip-whitespace>
         <bgo-issue-item issue="[[issue]]"></bgo-issue-item>
       </template>
@@ -139,6 +149,15 @@
 
       _computeIssuesLocation: function(gameKey) {
         return bgoApp.computeIssuesLocation(gameKey);
+      },
+
+      _addAction: function() {
+        this.$.addDialog.open();
+      },
+
+      _addHandle: function() {
+        // TODO refactor...
+        this.$.issueCollection.add(this.$.addDialog.issue);
       }
     });
 

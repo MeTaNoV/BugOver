@@ -89,9 +89,9 @@
         icon-active="bgo:star"
         active="{{_active}}">
       </toggle-icon>
-      <span>[[_computeFavorite()]]</span>
+      <span>[[_computeFavorite(game)]]</span>
       <iron-icon icon="bgo:update"></iron-icon>
-      <span>[[_computeLastUpdate()]]</span>
+      <span>[[_computeLastUpdate(game)]]</span>
     </div>
   </template>
   <script>
@@ -103,7 +103,8 @@
 
       properties: {
         game: {
-          type: Object
+          type: Object,
+          notify: true
         },
         user: {
           type: Object,
@@ -133,14 +134,13 @@
       },
 
       _activeChanged: function(active, user, game) {
-        // TODO PG: this should move to an init hook callback for firebase-auth
-        if(!user.favorites) {
-          this.set('user.favorites', {});
-        }
+        user.favorites = user.favorites || {};
+        game.favorites = game.favorites || {};
         // TODO PG: currently setting false if not active but it would be better to
         // remove the key...
         if (active !== this.set('user.favorites.' + game.__firebaseKey__)) {
           this.set('user.favorites.' + game.__firebaseKey__, active);
+          this.set('game.favorites.' + user.__firebaseKey__, active);
         }
       },
 
@@ -150,13 +150,17 @@
         }
       },
 
-      _computeFavorite: function() {
-        return "12";
+      _computeFavorite: function(game) {
+        if (game.favorites) {
+          return bgoApp.computeArrayKeys(game.favorites).length;
+        } else {
+          return 0;
+        }
       },
 
-      _computeLastUpdate: function() {
+      _computeLastUpdate: function(game) {
         // TODO PG integrate some moment component somewhere...
-        return Date.now();
+        return game.lastUpdate ? game.lastUpdate : Date.now();
       }
 
     });

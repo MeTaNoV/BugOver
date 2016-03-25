@@ -47,6 +47,9 @@ var bgoApp = {};
   };
 
   bgoApp.computeArrayKeys = function(obj) {
+    if (typeof obj !== 'object') {
+      return [];
+    }
     return Object.keys(obj).filter(function(key) {
       return obj[key] === true;
     });
