@@ -14,14 +14,11 @@
   <template strip-whitespace>
     <style>
       :host {
-        @apply(--layout-horizontal);
-        height: 160px;
-        padding: 4px;
+        @apply(--layout-vertical);
+        height: 205px;
         border: 1px solid #ddd;
       }
       a {
-        @apply(--layout-horizontal);
-        @apply(--layout-flex);
         color: var(--primary-text-color);
         text-decoration: none;
       }
@@ -29,15 +26,18 @@
         opacity: 0.7;
       }
       iron-image {
-        width: 325px;
+        width: 321px;
         height: 150px;
       }
       .gameInfo {
-        height: 100%;
+        padding: 4px;
+        @apply(--layout-flex);
+        @apply(--layout-horizontal);
+      }
+      .gameText {
         @apply(--layout-flex);
         @apply(--layout-vertical);
         padding: 6px;
-        overflow: auto;
       }
       .gameName {
         /* TODO PG: use another custom prop because we are force to overflow: visible */
@@ -49,34 +49,50 @@
         @apply(--paper-font-code2);
       }
       .gameDescription {
+        overflow: auto;
         @apply(--paper-font-body2);
+      }
+      .gameIcon {
+        padding-top: 4px;
+        border-top: 1px solid #ddd;
+        @apply(--layout-horizontal);
+        @apply(--layout-center);
       }
       toggle-icon {
         --toggle-icon-active: {
           color: var(--paper-yellow-700);
         };
       }
+      iron-icon {
+        margin: 8px;
+      }
     </style>
     <firebase-state logged="{{_logged}}"></firebase-state>
-    <a data-route="game" href$="{{_computeGameHref(game.__firebaseKey__)}}">
+    <div class="gameInfo">
       <iron-image
         sizing="contain"
         src="{{_computeImageSource(game.steamAppId)}}">
       </iron-image>
-      <div class="gameInfo">
+      <div class="gameText">
         <div class="gameName">
-          {{game.name}} <span class="gameVersion">({{game.currentVersion}})</span>
+          <a data-route="game" href$="{{_computeGameHref(game.__firebaseKey__)}}">
+            {{game.name}} <span class="gameVersion">({{game.currentVersion}})</span>
+          </a>
         </div>
         <span class="gameDescription">{{game.description}}</span>
       </div>
-    </a>
-    <template is="dom-if" if="[[_logged]]" restamp strip-whitespace>
-      <toggle-icon suffix
+    </div>
+    <div class="gameIcon">
+      <toggle-icon suffix noink
+        disabled="[[!_logged]]"
         icon="bgo:star-border"
         icon-active="bgo:star"
-        active="{{_active}}" noink>
+        active="{{_active}}">
       </toggle-icon>
-    </template>
+      <span>[[_computeFavorite()]]</span>
+      <iron-icon icon="bgo:update"></iron-icon>
+      <span>[[_computeLastUpdate()]]</span>
+    </div>
   </template>
   <script>
   (function() {
@@ -132,6 +148,15 @@
         if (logged === true && user.favorites) {
           this._active = !!user.favorites[game.__firebaseKey__];
         }
+      },
+
+      _computeFavorite: function() {
+        return "12";
+      },
+
+      _computeLastUpdate: function() {
+        // TODO PG integrate some moment component somewhere...
+        return Date.now();
       }
 
     });
