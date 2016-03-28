@@ -4,8 +4,11 @@
 <link rel="import" href="../../bower_components/paper-dialog-behavior/paper-dialog-behavior.html">
 <link rel="import" href="../../bower_components/paper-dialog-behavior/paper-dialog-shared-styles.html">
 <link rel="import" href="../../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../../bower_components/paper-input/paper-textarea.html">
 
 <link rel="import" href="../../bower_components/neon-animation/neon-animation-runner-behavior.html">
+
+<link rel="import" href="./bgo-steam-appid-validator.html">
 
 <dom-module id="bgo-add-game-dialog">
   <template>
@@ -19,10 +22,25 @@
 
     <h2>Add a Game</h2>
 
-    <paper-input id="gameId" label="Game Steam ID"></paper-input>
-    <paper-input id="gameName" label="Game Name"></paper-input>
-    <paper-input id="gameVersion" label="Game Version"></paper-input>
-    <paper-input id="gameDesc" label="Game Description"></paper-input>
+    <bgo-steam-appid-validator></bgo-steam-appid-validator>
+    <paper-input
+      id="gameId" label="Game Steam App Id"
+      required auto-validate
+      validator="bgo-steam-appid-validator"
+      error-message="Invalid Steam App Id">
+    </paper-input>
+    <paper-input
+      id="gameName" label="Game Name"
+      required auto-validate>
+    </paper-input>
+    <paper-input
+      id="gameVersion" label="Game Version">
+    </paper-input>
+    <paper-textarea
+      id="gameDesc" label="Game Description"
+      rows="10"
+      required auto-validate>
+    </paper-textarea>
 
     <div class="buttons">
       <paper-button dialog-confirm raised
